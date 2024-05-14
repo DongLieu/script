@@ -134,7 +134,7 @@ sleep 7
 
 injectived tx bank send $(injectived keys show validator1 -a --keyring-backend=test --home=$HOME/.injectived/validator1) $(injectived keys show validator2 -a --keyring-backend=test --home=$HOME/.injectived/validator2) 100000stake --keyring-backend=test --chain-id=testing-1 -y --home=$HOME/.injectived/validator1 --fees 100000000000000inj
 
-injectived tx gov submit-proposal  /Users/donglieu/Desktop/scrip/injective/propasal.json --timeout-height 4000 --from validator1  --keyring-backend=test --chain-id=testing-1 -y --home=$HOME/.injectived/validator1 --fees 100000000000000inj
+injectived tx gov submit-proposal  /Users/donglieu/Desktop/scrip/injective/propasal.json --timeout-height 10000 --from validator1  --keyring-backend=test --chain-id=testing-1 -y --home=$HOME/.injectived/validator1 --fees 100000000000000inj
 
 injectived tx gov vote 1 yes --from validator2 --keyring-backend=test --chain-id=testing-1 -y --home=$HOME/.injectived/validator2 --fees 100000000000000inj
 

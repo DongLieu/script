@@ -39,4 +39,6 @@ node3=$(injectived tendermint show-node-id --home=$HOME/.injectived/validator3)
 
 sed -i -E "s|persistent_peers = \"\"|persistent_peers = \"$node1@localhost:26656,$node2@localhost:26656,$node3@localhost:26656\"|g" $HOME/.injectived/validator5/config/config.toml
 
+injectived keys show validator5 -a --keyring-backend=test --home=$HOME/.injectived/validator5
+
 injectived start --home=$HOME/.injectived/validator5
