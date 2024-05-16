@@ -136,6 +136,12 @@ injectived tx bank send $(injectived keys show validator1 -a --keyring-backend=t
 
 injectived tx gov submit-proposal  /Users/donglieu/Desktop/scrip/injective/propasal.json --timeout-height 10000 --from validator1  --keyring-backend=test --chain-id=testing-1 -y --home=$HOME/.injectived/validator1 --fees 100000000000000inj
 
+injectived tx gov submit-proposal  /Users/donglieu/Desktop/scrip/injective/propasal1.json --timeout-height 10000 --from validator1  --keyring-backend=test --chain-id=testing-1 -y --home=$HOME/.injectived/validator1 --fees 100000000000000inj
+
+
 injectived tx gov vote 1 yes --from validator2 --keyring-backend=test --chain-id=testing-1 -y --home=$HOME/.injectived/validator2 --fees 100000000000000inj
 
 injectived q gov proposals --from validator2 --keyring-backend=test --chain-id=testing-1 -y --home=$HOME/.injectived/validator2 
+
+
+injectived tx gov submit-legacy-proposal --title="Test Proposal" --description="testing" --type="Text" --deposit="100000000stake" --from validator1  --keyring-backend=test --chain-id=testing-1 -y --home=$HOME/.injectived/validator1 --fees 100000000000000inj

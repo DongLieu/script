@@ -1,0 +1,13 @@
+{
+    "messages": [
+      {
+        "@type": "/cosmos.bank.v1beta1.MsgSend",
+        "from_address": "inj1920e4n95r7hvhkqhl47llrfffkwxy67twtms8j", 
+        "to_address": "inj156c0y92k339acc7k3uf9cnsqrlf6wmcwpdd368",
+        "amount":[{"denom": "stake","amount": "10"}]
+      }
+    ],
+    "deposit": "10stake",
+    "title": "Proposal Title",
+    "summary": "Proposal Summary"
+  }
