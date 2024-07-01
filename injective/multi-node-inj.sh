@@ -124,9 +124,11 @@ sed -i -E "s|persistent_peers = \"\"|persistent_peers = \"$node1@localhost:26656
 
 
 # # start all three validators/
+# injectived start --home=$HOME/.injectived/validator1
 screen -S injective1 -t injective1 -d -m injectived start --home=$HOME/.injectived/validator1
 screen -S injective2 -t injective2 -d -m injectived start --home=$HOME/.injectived/validator2
 screen -S injective3 -t injective3 -d -m injectived start --home=$HOME/.injectived/validator3
+# injectived start --home=$HOME/.injectived/validator3
 
 # screen -r injective1
 
@@ -134,14 +136,14 @@ sleep 7
 
 injectived tx bank send $(injectived keys show validator1 -a --keyring-backend=test --home=$HOME/.injectived/validator1) $(injectived keys show validator2 -a --keyring-backend=test --home=$HOME/.injectived/validator2) 100000stake --keyring-backend=test --chain-id=testing-1 -y --home=$HOME/.injectived/validator1 --fees 100000000000000inj
 
-injectived tx gov submit-proposal  /Users/donglieu/Desktop/scrip/injective/propasal.json --timeout-height 10000 --from validator1  --keyring-backend=test --chain-id=testing-1 -y --home=$HOME/.injectived/validator1 --fees 100000000000000inj
+# injectived tx gov submit-proposal  /Users/donglieu/Desktop/scrip/injective/propasal.json --timeout-height 10000 --from validator1  --keyring-backend=test --chain-id=testing-1 -y --home=$HOME/.injectived/validator1 --fees 100000000000000inj
 
-injectived tx gov submit-proposal  /Users/donglieu/Desktop/scrip/injective/propasal1.json --timeout-height 10000 --from validator1  --keyring-backend=test --chain-id=testing-1 -y --home=$HOME/.injectived/validator1 --fees 100000000000000inj
-
-
-injectived tx gov vote 1 yes --from validator2 --keyring-backend=test --chain-id=testing-1 -y --home=$HOME/.injectived/validator2 --fees 100000000000000inj
-
-injectived q gov proposals --from validator2 --keyring-backend=test --chain-id=testing-1 -y --home=$HOME/.injectived/validator2 
+# injectived tx gov submit-proposal  /Users/donglieu/Desktop/scrip/injective/propasal1.json --timeout-height 10000 --from validator1  --keyring-backend=test --chain-id=testing-1 -y --home=$HOME/.injectived/validator1 --fees 100000000000000inj
 
 
-injectived tx gov submit-legacy-proposal --title="Test Proposal" --description="testing" --type="Text" --deposit="100000000stake" --from validator1  --keyring-backend=test --chain-id=testing-1 -y --home=$HOME/.injectived/validator1 --fees 100000000000000inj
+# injectived tx gov vote 1 yes --from validator2 --keyring-backend=test --chain-id=testing-1 -y --home=$HOME/.injectived/validator2 --fees 100000000000000inj
+
+# injectived q gov proposals --from validator2 --keyring-backend=test --chain-id=testing-1 -y --home=$HOME/.injectived/validator2 
+
+
+# injectived tx gov submit-legacy-proposal --title="Test Proposal" --description="testing" --type="Text" --deposit="100000000stake" --from validator1  --keyring-backend=test --chain-id=testing-1 -y --home=$HOME/.injectived/validator1 --fees 100000000000000inj
