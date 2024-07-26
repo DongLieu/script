@@ -3,6 +3,7 @@
 # # # screen -r mesh2
 # killall hermes || true
 killall meshd || true
+killall hermes || true
 # deploy chain 1
 ./mesh/testibc/chain1.sh
 # deploy chain 2
@@ -10,12 +11,15 @@ killall meshd || true
 sleep 7
 ./mesh/testibc/instantiate.sh
 sleep 7
+meshd tx interchain-accounts controller register connection-0 --from val --keyring-backend test --home=$HOME/.meshd/chain1 --chain-id chain-1 --yes
+meshd tx interchain-accounts controller register connection-0 --from val --keyring-backend test --home=$HOME/.meshd/chain2 --chain-id chain-2 --node tcp://127.0.0.1:26654 --yes
 # run relayer
 ./mesh/testibc/hermes_bootstrap.sh
-sleep 7
 # instantiate contract consumer and provider
 
 
+# meshd tx interchain-accounts controller register connection-0 --from val --keyring-backend test --home=$HOME/.meshd/chain1 --chain-id chain-1 --yes
+# meshd tx interchain-accounts controller register connection-0 --from val --keyring-backend test --home=$HOME/.meshd/chain2 --chain-id chain-2 --node tcp://127.0.0.1:26654 --yes
 # sau khi ibc thi mesh_external_staking.wasm lay price mesh_osmosis_price_provider.wasm and mesh_remote_price_feed.wasm
 
 
@@ -34,3 +38,9 @@ sleep 7
 
 # meshd q ibc 
 #  meshd q ibc channel channels --node tcp://127.0.0.1:26654
+
+# name 33333:  ports/wasm.mesh1zwv6feuzhy6a9wekh96cd57lsarmqlwxdypdsplw6zhfncqw6ftqsqwra5
+# 3:20PM ERR channel open init callback failed error="could not retrieve module from port-id: ports/wasm.mesh1zwv6feuzhy6a9wekh96cd57lsarmqlwxdypdsplw6zhfncqw6ftqsqwra5: capability not found" module=server port-id=wasm.mesh1zwv6feuzhy6a9wekh96cd57lsarmqlwxdypdsplw6zhfncqw6ftqsqwra5
+
+#  meshd q wasm list-contract-by-code  4 --node tcp://127.0.0.1:26654
+# mesh1zwv6feuzhy6a9wekh96cd57lsarmqlwxdypdsplw6zhfncqw6ftqsqwra5

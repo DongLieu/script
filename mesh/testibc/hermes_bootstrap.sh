@@ -192,10 +192,21 @@ screen -S hermes1 -t hermes1 -d -m  hermes start
 
 # hermes create channel --a-chain chain-1 --b-chain chain-2 --a-port transfer --b-port transfer --yes --new-client-connection
 
-hermes create channel --a-chain chain-1 --b-chain chain-2 --a-port wasm.mesh1zwv6feuzhy6a9wekh96cd57lsarmqlwxdypdsplw6zhfncqw6ftqsqwra5 --b-port wasm.mesh1qg5ega6dykkxc307y25pecuufrjkxkaggkkxh7nad0vhyhtuhw3stmd2jl  --new-client-connection --yes
-
+hermes create connection  --a-chain chain-1 --b-chain chain-2
+sleep 2
+hermes create channel --a-chain chain-1 --a-connection connection-0  --a-port wasm.mesh1qg5ega6dykkxc307y25pecuufrjkxkaggkkxh7nad0vhyhtuhw3stmd2jl  --b-port wasm.mesh1zwv6feuzhy6a9wekh96cd57lsarmqlwxdypdsplw6zhfncqw6ftqsqwra5
+# hermes create channel --a-chain chain-1 --a-connection connection-0  --a-port wasm.mesh1qg5ega6dykkxc307y25pecuufrjkxkaggkkxh7nad0vhyhtuhw3stmd2jl  --b-port wasm.mesh1zwv6feuzhy6a9wekh96cd57lsarmqlwxdypdsplw6zhfncqw6ftqsqwra5
 # enter vivid sad soap boat melt slush price air stomach cinnamon hazard rich cactus matter soft choose you toss recycle amazing fuel tag upper
 # mesh1uyy6eeyua584e77hn40y0mxvjm2jn3ahc5vr0k
 
 # mesh1azy6ueyw3a8d59jtmlhuarlnlhyk4dpfm5d5ds
 # space morning bring token style buzz water spell power remind flavor minimum naive disease have must finish holiday cream fringe age valve guess pretty
+
+# len 103
+# 3:24PM INF created new capability module=ibc name=capabilities/ports/wasm.mesh1zwv6feuzhy6a9wekh96cd57lsarmqlwxdypdsplw6zhfncqw6ftqsqwra5/channels/channel-1
+# 3:24PM ERR channel open try callback failed error="Unauthorized: execute wasm contract failed" channel-id=channel-1 module=server port-id=wasm.mesh1zwv6feuzhy6a9wekh96cd57lsarmqlwxdypdsplw6zhfncqw6ftqsqwra5
+
+# hermes create channel --a-chain chain-1 --b-chain chain-2 --a-port wasm.mesh1zwv6feuzhy6a9wekh96cd57lsarmqlwxdypdsplw6zhfncqw6ftqsqwra5  --b-port wasm.mesh1qg5ega6dykkxc307y25pecuufrjkxkaggkkxh7nad0vhyhtuhw3stmd2jl  --new-client-connection --yes --channel-version '{"fee_version":"ics29-1","app_version":"{\"protocol\":\"mesh-security\",\"version\":\"0.11.0\"}"}'
+
+
+# hermes create channel --a-chain chain-1 --a-connection connection-0  --a-port wasm.mesh1zwv6feuzhy6a9wekh96cd57lsarmqlwxdypdsplw6zhfncqw6ftqsqwra5  --b-port wasm.mesh1qg5ega6dykkxc307y25pecuufrjkxkaggkkxh7nad0vhyhtuhw3stmd2jl
