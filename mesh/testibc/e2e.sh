@@ -15,7 +15,10 @@ meshd tx interchain-accounts controller register connection-0 --from val --keyri
 meshd tx interchain-accounts controller register connection-0 --from val --keyring-backend test --home=$HOME/.meshd/chain2 --chain-id chain-2 --node tcp://127.0.0.1:26654 --yes
 # run relayer
 ./mesh/testibc/hermes_bootstrap.sh
-# instantiate contract consumer and provider
+
+# stake from provider(chain2) {"donate": {}}
+
+meshd tx wasm execute mesh14hj2tavq8fpesdwxxcu44rty3hh90vhujrvcmstl4zr3txmfvw9sysl6kf  '{"bond":{}}' --amount 10000stake --from test1 --home=$HOME/.meshd/chain2  --chain-id chain-2 --keyring-backend test --node tcp://127.0.0.1:26654 --fees 1stake -y --gas 5406929
 
 
 # meshd tx interchain-accounts controller register connection-0 --from val --keyring-backend test --home=$HOME/.meshd/chain1 --chain-id chain-1 --yes
