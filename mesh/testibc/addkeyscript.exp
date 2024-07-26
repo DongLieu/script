@@ -1,0 +1,9 @@
+#!/usr/bin/expect
+
+set seed_phrase [lindex $argv 0]
+set home_path [lindex $argv 1]
+
+spawn meshd keys add val --keyring-backend test --home=$home_path --recover
+expect "Enter..."
+send "$seed_phrase\r"
+interact

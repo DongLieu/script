@@ -1,4 +1,5 @@
 #!/bin/bash
+killall meshd || true
 rm -rf $HOME/.meshd/
 
 
@@ -32,4 +33,13 @@ meshd collect-gentxs
 meshd validate-genesis
 
 # Start the node (remove the --pruning=nothing flag if historical queries are not needed)
-meshd start 
+
+
+screen -S meshx -t meshx -d -m meshd start
+
+sleep 7
+
+test2=$(meshd keys show test1  --keyring-backend test -a)
+val2=$(meshd keys show val  --keyring-backend test -a)
+
+meshd tx bank send $val2 $test2 100000stake  --chain-id testt --keyring-backend test --fees 10stake -y #--node tcp://127.0.0.1:26657
