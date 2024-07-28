@@ -30,7 +30,7 @@ sleep 7
 
 # =========extenal============================meshvaloper1f7twgcq4ypzg7y24wuywy06xmdet8pc4hsl6ty
 # '{"stake_remote":{"contract":"cosmos1zwv6feuzhy6a9wekh96cd57lsarmqlwxdypdsplw6zhfncqw6ftqp82y57", "amount": {"denom":"stake", "amount":"100000000"}, "msg":"eyJ2YWxpZGF0b3IiOiAiY29zbW9zdmFsb3BlcjE0cjNhbmRuM3FyaDJ6NzN1eTNhNjZ2YzgyazU1ZHE1ZG04MmFxeSJ9"}}'
-meshd tx wasm execute mesh14hj2tavq8fpesdwxxcu44rty3hh90vhujrvcmstl4zr3txmfvw9sysl6kf '{"stake_remote":{"contract":"mesh1zwv6feuzhy6a9wekh96cd57lsarmqlwxdypdsplw6zhfncqw6ftqsqwra5", "amount": {"denom":"stake", "amount":"1000"}, "msg":"eyJ2YWxpZGF0b3IiOiAibWVzaHZhbG9wZXIxZjd0d2djcTR5cHpnN3kyNHd1eXd5MDZ4bWRldDhwYzRoc2w2dHkifQ=="}}' --from val --home=$HOME/.meshd/chain2  --chain-id chain-2 --keyring-backend test --node tcp://127.0.0.1:26654 --fees 1stake -y --gas 5406929
+meshd tx wasm execute mesh14hj2tavq8fpesdwxxcu44rty3hh90vhujrvcmstl4zr3txmfvw9sysl6kf '{"stake_remote":{"contract":"mesh1zwv6feuzhy6a9wekh96cd57lsarmqlwxdypdsplw6zhfncqw6ftqsqwra5", "amount": {"denom":"stake", "amount":"1000"}, "msg":"eyJ2YWxpZGF0b3IiOiAibWVzaHZhbG9wZXIxZjd0d2djcTR5cHpnN3kyNHd1eXd5MDZ4bWRldDhwYzRoc2w2dHkifQ=="}}' --from test1 --home=$HOME/.meshd/chain2  --chain-id chain-2 --keyring-backend test --node tcp://127.0.0.1:26654 --fees 1stake -y --gas 5406929
 
 # {"stake_remote":{"contract":"cosmos1zwv6feuzhy6a9wekh96cd57lsarmqlwxdypdsplw6zhfncqw6ftqp82y57", "amount": {"denom":"stake", "amount":"100000000"}, "msg":"eyJ2YWxpZGF0b3IiOiAiY29zbW9zdmFsb3BlcjF5czA0bnNhbTAyeHA1cGt3Y3A2eGozeTd6bDd0emtmZnN3ampteSJ9"}}
 

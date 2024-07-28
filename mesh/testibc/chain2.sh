@@ -8,14 +8,14 @@ chainid=chain-2
 
 # meshd keys add val --keyring-backend test --home=$home
 # meshd keys add val --keyring-backend test --home=$home
-mnm_val=$(meshd keys mnemonic)
-echo $mnm_val > $HOME/.hermes/mnemonic2
+mnm_val=$(cat ./mesh/testibc/testdata/mnemonic2)
+
 ./mesh/testibc/addkeyscript.exp "$mnm_val" "$home"
 
 meshd keys add test1 --keyring-backend test --home=$home
 
 # init chain
-meshd init test-1 --chain-id $chainid --home=$home
+meshd init mesh-2 --chain-id $chainid --home=$home
 
 # Change parameter token denominations to stake
 cat $HOME/.meshd/chain2/config/genesis.json | jq '.app_state["staking"]["params"]["bond_denom"]="stake"' > $HOME/.meshd/chain2/config/tmp_genesis.json && mv $HOME/.meshd/chain2/config/tmp_genesis.json $HOME/.meshd/chain2/config/genesis.json

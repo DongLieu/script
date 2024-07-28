@@ -11,12 +11,11 @@ test2=$(meshd keys show test1  --keyring-backend test -a --home=$home2)
 val2=$(meshd keys show val  --keyring-backend test -a --home=$home2)
 
 # # #=======bpatcontract consumer
+meshd tx wasm store ./mesh/testibc/testdata/mesh_simple_price_feed.wasm.gz --from $val1 --home=$HOME/.meshd/chain1  --chain-id chain-1 --keyring-backend test --fees 1stake -y --gas 3059023
 sleep 7
-meshd tx wasm store /Users/donglieu/script/mesh/testibc/testdata/mesh_simple_price_feed.wasm.gz --from $val1 --home=$HOME/.meshd/chain1  --chain-id chain-1 --keyring-backend test --fees 1stake -y --gas 3059023
+meshd tx wasm store ./mesh/testibc/testdata/mesh_virtual_staking.wasm.gz --from $val1 --home=$HOME/.meshd/chain1  --chain-id chain-1 --keyring-backend test --fees 1stake -y --gas 3059023
 sleep 7
-meshd tx wasm store /Users/donglieu/script/mesh/testibc/testdata/mesh_virtual_staking.wasm.gz --from $val1 --home=$HOME/.meshd/chain1  --chain-id chain-1 --keyring-backend test --fees 1stake -y --gas 3059023
-sleep 7
-meshd tx wasm store /Users/donglieu/script/mesh/testibc/testdata/mesh_converter.wasm.gz --from $val1 --home=$HOME/.meshd/chain1  --chain-id chain-1 --keyring-backend test --fees 1stake -y --gas 3059023
+meshd tx wasm store ./mesh/testibc/testdata/mesh_converter.wasm.gz --from $val1 --home=$HOME/.meshd/chain1  --chain-id chain-1 --keyring-backend test --fees 1stake -y --gas 3059023
 sleep 7
 meshd tx wasm instantiate 1 '{"native_per_foreign": "0.5"}' --label contract-pricefeed  --admin $val1 --from $val1 --home=$HOME/.meshd/chain1  --chain-id chain-1 --keyring-backend test --fees 1stake -y --gas 3059023 
 sleep 7
@@ -28,17 +27,17 @@ meshd tx wasm instantiate 3 '{"price_feed": "mesh14hj2tavq8fpesdwxxcu44rty3hh90v
 
 # # #========== bpatcontract provider
 sleep 7
-meshd tx wasm store /Users/donglieu/script/mesh/testibc/testdata/mesh_vault.wasm.gz --from $val2 --home=$HOME/.meshd/chain2  --chain-id chain-2 --keyring-backend test --node tcp://127.0.0.1:26654 --fees 1stake -y --gas 3059023
+meshd tx wasm store ./mesh/testibc/testdata/mesh_vault.wasm.gz --from $val2 --home=$HOME/.meshd/chain2  --chain-id chain-2 --keyring-backend test --node tcp://127.0.0.1:26654 --fees 1stake -y --gas 3059023
 sleep 7
-meshd tx wasm store /Users/donglieu/script/mesh/testibc/testdata/mesh_native_staking_proxy.wasm.gz --from $val2 --home=$HOME/.meshd/chain2  --chain-id chain-2 --keyring-backend test --node tcp://127.0.0.1:26654 --fees 1stake -y --gas 3059023
+meshd tx wasm store ./mesh/testibc/testdata/mesh_native_staking_proxy.wasm.gz --from $val2 --home=$HOME/.meshd/chain2  --chain-id chain-2 --keyring-backend test --node tcp://127.0.0.1:26654 --fees 1stake -y --gas 3059023
 sleep 7
-meshd tx wasm store /Users/donglieu/script/mesh/testibc/testdata/mesh_native_staking.wasm.gz --from $val2 --home=$HOME/.meshd/chain2  --chain-id chain-2 --keyring-backend test --node tcp://127.0.0.1:26654 --fees 1stake -y --gas 3059023
+meshd tx wasm store ./mesh/testibc/testdata/mesh_native_staking.wasm.gz --from $val2 --home=$HOME/.meshd/chain2  --chain-id chain-2 --keyring-backend test --node tcp://127.0.0.1:26654 --fees 1stake -y --gas 3059023
 sleep 7
-meshd tx wasm store /Users/donglieu/script/mesh/testibc/testdata/mesh_external_staking.wasm.gz --from $val2 --home=$HOME/.meshd/chain2  --chain-id chain-2 --keyring-backend test --node tcp://127.0.0.1:26654 --fees 1stake -y --gas 5406929
+meshd tx wasm store ./mesh/testibc/testdata/mesh_external_staking.wasm.gz --from $val2 --home=$HOME/.meshd/chain2  --chain-id chain-2 --keyring-backend test --node tcp://127.0.0.1:26654 --fees 1stake -y --gas 5406929
 sleep 7
 meshd tx wasm instantiate 1 '{"denom": "stake", "local_staking": {"code_id": 3, "msg": "eyJkZW5vbSI6ICJzdGFrZSIsICJvd25lciI6ICJtZXNoMTBkMDd5MjY1Z21tdXZ0NHowdzlhdzg4MGpuc3I3MDBqczJsam5nIiwgInByb3h5X2NvZGVfaWQiOiAyLCAidmFsaWRhdG9yIjogIm1lc2h2YWxvcGVyMTg5OHFnODJjeTJjcWozczZnYTA1aDl1ang5N2R2cnZqeGt3eDl3IiwgInNsYXNoX3JhdGlvX2RzaWduIjogIjAuMjAiLCAic2xhc2hfcmF0aW9fb2ZmbGluZSI6ICIwLjEwIiB9"}}' --label contract-vault --admin $val2 --from $val2 --home=$HOME/.meshd/chain2  --chain-id chain-2 --keyring-backend test --node tcp://127.0.0.1:26654 --fees 1stake -y --gas 3059023 
 sleep 7
-meshd tx wasm instantiate 4 '{"remote_contact": {"connection_id":"connection-0", "port_id":"wasm.mesh1qg5ega6dykkxc307y25pecuufrjkxkaggkkxh7nad0vhyhtuhw3stmd2jl"}, "denom": "stake", "vault": "mesh14hj2tavq8fpesdwxxcu44rty3hh90vhujrvcmstl4zr3txmfvw9sysl6kf", "unbonding_period": 1814400, "rewards_denom": "stake", "slash_ratio": { "double_sign": "0.20", "offline": "0.10" }  }' --label contract-externalstaking --admin $val2 --from $val2 --home=$HOME/.meshd/chain2  --chain-id chain-2 --keyring-backend test --node tcp://127.0.0.1:26654 --fees 1stake -y --gas 3059023 
+meshd tx wasm instantiate 4 '{"remote_contact": {"connection_id":"connection-0", "port_id":"wasm.mesh1qg5ega6dykkxc307y25pecuufrjkxkaggkkxh7nad0vhyhtuhw3stmd2jl"}, "denom": "stake", "vault": "mesh14hj2tavq8fpesdwxxcu44rty3hh90vhujrvcmstl4zr3txmfvw9sysl6kf", "unbonding_period": 1814400, "rewards_denom": "stake", "slash_ratio": { "double_sign": "0.20", "offline": "0.10" }  }' --label contract-externalstaking --admin val --from $val2 --home=$HOME/.meshd/chain2  --chain-id chain-2 --keyring-backend test --node tcp://127.0.0.1:26654 --fees 1stake -y --gas 3059023 
 sleep 7
 
 #1 mesh14hj2tavq8fpesdwxxcu44rty3hh90vhujrvcmstl4zr3txmfvw9sysl6kf
