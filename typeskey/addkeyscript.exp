@@ -1,0 +1,11 @@
+#!/usr/bin/expect
+
+set seed_phrase [lindex $argv 0]
+set home_path [lindex $argv 1]
+set app [lindex $argv 2]
+set name [lindex $argv 3]
+
+spawn $app keys add $name --keyring-backend test --home=$home_path --recover
+expect "Enter..."
+send "$seed_phrase\r"
+interact

@@ -1,7 +1,8 @@
 #!/bin/bash
 killall onomyd || true
-rm -rf $HOME/.onomy/
+rm -rf $HOME/.onomy
 
+onomyd init test-1 --chain-id testt
 
 onomyd keys add val --keyring-backend test 
 onomyd keys add test1 --keyring-backend test 
@@ -9,12 +10,12 @@ onomyd keys add test2 --keyring-backend test
 onomyd keys add test3 --keyring-backend test 
 
 # init chain
-onomyd init test-1 --chain-id testt
+# onomyd init test-1 --chain-id testt
 
 # Change parameter token denominations to stake
 cat $HOME/.onomy/config/genesis.json | jq '.app_state["staking"]["params"]["bond_denom"]="stake"' > $HOME/.onomy/config/tmp_genesis.json && mv $HOME/.onomy/config/tmp_genesis.json $HOME/.onomy/config/genesis.json
-cat $HOME/.onomy/config/genesis.json | jq '.app_state["crisis"]["constant_fee"]["denom"]="stake"' > $HOME/.onomy/config/tmp_genesis.json && mv $HOME/.onomy/config/tmp_genesis.json $HOME/.onomy/config/genesis.json
-cat $HOME/.onomy/config/genesis.json | jq '.app_state["gov"]["deposit_params"]["min_deposit"][0]["denom"]="stake"' > $HOME/.onomy/config/tmp_genesis.json && mv $HOME/.onomy/config/tmp_genesis.json $HOME/.onomy/config/genesis.json
+# cat $HOME/.onomy/config/genesis.json | jq '.app_state["crisis"]["constant_fee"]["denom"]="stake"' > $HOME/.onomy/config/tmp_genesis.json && mv $HOME/.onomy/config/tmp_genesis.json $HOME/.onomy/config/genesis.json
+# cat $HOME/.onomy/config/genesis.json | jq '.app_state["gov"]["deposit_params"]["min_deposit"][0]["denom"]="stake"' > $HOME/.onomy/config/tmp_genesis.json && mv $HOME/.onomy/config/tmp_genesis.json $HOME/.onomy/config/genesis.json
 cat $HOME/.onomy/config/genesis.json | jq '.app_state["mint"]["params"]["mint_denom"]="stake"' > $HOME/.onomy/config/tmp_genesis.json && mv $HOME/.onomy/config/tmp_genesis.json $HOME/.onomy/config/genesis.json
 
 # Allocate genesis accounts (cosmos formatted addresses)
