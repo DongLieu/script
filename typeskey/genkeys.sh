@@ -1,5 +1,7 @@
 #!/bin/bash
 set -xeu
+sudo apt-get install expect
+brew install expect
 
 app=$1
 home=$2

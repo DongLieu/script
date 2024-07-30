@@ -3,7 +3,7 @@ killall realio-networkd || true
 rm -rf $HOME/.realio-network/
 
 # add key
-./typeskey/genkeys.sh "realio-networkd" "/Users/donglieu/.realio-network"
+./typeskey/genkeys.sh "realio-networkd" "$HOME/.realio-network"
 
 # realio1g4a4jneyjrn7edhhd7l5cx8utgjk8carmkseh6
 val1=$(realio-networkd keys show val1  --keyring-backend test -a)
