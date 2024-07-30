@@ -10,7 +10,7 @@ chainid=chain-2
 # meshd keys add val --keyring-backend test --home=$home
 mnm_val=$(cat ./mesh/testibc/testdata/mnemonic2)
 
-./mesh/testibc/addkeyscript.exp "$mnm_val" "$home"
+echo "$mnm_val"| meshd keys add val1 --keyring-backend test --home=$home --recover
 
 meshd keys add test1 --keyring-backend test --home=$home
 
