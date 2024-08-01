@@ -2,7 +2,7 @@ rm -rf node1
 rm -rf node2
 rm -rf node3
 
-cp -r mainnet node1
+cp -r /Users/donglieu/.realio-network node1
 cp -r node1 node2
 cp -r node1 node3
 
