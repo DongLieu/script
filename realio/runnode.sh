@@ -11,7 +11,7 @@ val1addr=$(realio-networkd keys show val1  --keyring-backend test -a)
 val2addr=$(realio-networkd keys show val2  --keyring-backend test -a)
 
 # # init chain
-realio-networkd init test --chain-id realio_3-2
+realio-networkd init test --chain-id realionetwork_3301-1
 
 # Change parameter token denominations to stake
 # cat $HOME/.realio-network/config/genesis.json | jq '.app_state["staking"]["params"]["bond_denom"]="stake"' > $HOME/.realio-network/config/tmp_genesis.json && mv $HOME/.realio-network/config/tmp_genesis.json $HOME/.realio-network/config/genesis.json

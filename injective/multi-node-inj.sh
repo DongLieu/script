@@ -118,9 +118,9 @@ cp $HOME/.injectived/validator1/config/genesis.json $HOME/.injectived/validator3
 node1=$(injectived tendermint show-node-id --home=$HOME/.injectived/validator1)
 node2=$(injectived tendermint show-node-id --home=$HOME/.injectived/validator2)
 node3=$(injectived tendermint show-node-id --home=$HOME/.injectived/validator3)
-sed -i -E "s|persistent_peers = \"\"|persistent_peers = \"$node1@localhost:26656,$node2@localhost:26656,$node3@localhost:26656\"|g" $HOME/.injectived/validator1/config/config.toml
-sed -i -E "s|persistent_peers = \"\"|persistent_peers = \"$node1@localhost:26656,$node2@localhost:26656,$node3@localhost:26656\"|g" $HOME/.injectived/validator2/config/config.toml
-sed -i -E "s|persistent_peers = \"\"|persistent_peers = \"$node1@localhost:26656,$node2@localhost:26656,$node3@localhost:26656\"|g" $HOME/.injectived/validator3/config/config.toml
+sed -i -E "s|persistent_peers = \"\"|persistent_peers = \"$node1@localhost:26656,$node2@localhost:26653,$node3@localhost:26650\"|g" $HOME/.injectived/validator1/config/config.toml
+sed -i -E "s|persistent_peers = \"\"|persistent_peers = \"$node1@localhost:26656,$node2@localhost:26653,$node3@localhost:26650\"|g" $HOME/.injectived/validator2/config/config.toml
+sed -i -E "s|persistent_peers = \"\"|persistent_peers = \"$node1@localhost:26656,$node2@localhost:26653,$node3@localhost:26650\"|g" $HOME/.injectived/validator3/config/config.toml
 
 
 # # start all three validators/
