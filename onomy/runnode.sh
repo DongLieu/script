@@ -23,5 +23,8 @@ onomyd validate-genesis
 
 sed -i -E 's|minimum-gas-prices = ""|minimum-gas-prices = "0.0001stake"|g' $HOME/.onomy/config/app.toml
 # screen -S xionx -t xionx -d -m
-onomyd start
+# onomyd start
 
+# onomyvaloper1wa3u4knw74r598quvzydvca42qsmk6jrya79zd
+
+# onomyd testnet onomy-mainnet-1  onomyvaloper1wa3u4knw74r598quvzydvca42qsmk6jrya79zd --accounts-to-fund="onomy1wa3u4knw74r598quvzydvca42qsmk6jrc6uj7m,onomy1w7f3xx7e75p4l7qdym5msqem9rd4dyc4y47xsd,onomy1g9v3zjt6rfkwm4s8sw9wu4jgz9me8pn2ygn94a" --home=$HOME/.onomy --skip-confirmation
