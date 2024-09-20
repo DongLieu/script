@@ -1,0 +1,15 @@
+{
+  "messages": [{
+    "@type": "/cosmos.distribution.v1beta1.MsgFundCommunityPool",
+    "depositor": "inj1920e4n95r7hvhkqhl47llrfffkwxy67twtms8j",
+    "amount": [
+      {
+        "denom": "inj",
+        "amount": "1000"
+      }
+    ]
+  }],
+  "deposit": "10stake",
+  "title": "My proposal",
+  "summary": "A short summary of my proposal"
+}
