@@ -101,6 +101,7 @@ update_test_genesis () {
 }
 
 update_test_genesis '.app_state["gov"]["voting_params"]["voting_period"] = "15s"'
+update_test_genesis '.app_state["staking"]["params"]["unbonding_time"] = "180s"'
 
 cp $HOME/.onomyd/validator1/config/genesis.json $HOME/.onomyd/validator2/config/genesis.json
 cp $HOME/.onomyd/validator1/config/genesis.json $HOME/.onomyd/validator3/config/genesis.json
@@ -131,26 +132,10 @@ onomyd keys list --keyring-backend=test --home=$HOME/.onomyd/validator3
 onomyd tx bank send onomy1wa3u4knw74r598quvzydvca42qsmk6jrc6uj7m onomy1w7f3xx7e75p4l7qdym5msqem9rd4dyc4y47xsd 100000stake --keyring-backend=test --chain-id=testing-1 -y --home=$HOME/.onomyd/validator1 --fees 10stake
 
 # sleep 7
-# killall onomyd || true
-# onomyd testnet testing-1  onomyvaloper1wa3u4knw74r598quvzydvca42qsmk6jrya79zd --accounts-to-fund="onomy1wa3u4knw74r598quvzydvca42qsmk6jrc6uj7m,onomy1w7f3xx7e75p4l7qdym5msqem9rd4dyc4y47xsd,onomy1g9v3zjt6rfkwm4s8sw9wu4jgz9me8pn2ygn94a" --home=$HOME/.onomyd/validator1 --skip-confirmation
 
-# onomyd tx gov submit-proposal add-stable-coin "d" "d" "usdt" "100000000000000000000000000000" "1" "0.001" "0.001" onomy1wa3u4knw74r598quvzydvca42qsmk6jrc6uj7m  10000000000000000000stake --keyring-backend=test  --home=$HOME/.onomyd/validator1 --from onomy1wa3u4knw74r598quvzydvca42qsmk6jrc6uj7m -y --chain-id testing-1
+# onomyd tx gov submit-proposal software-upgrade v2.0.0  --upgrade-info v2.0.0 --upgrade-height 20  --title upgrade --description upgrade --from validator1 --keyring-backend test --home $HOME/.onomyd/validator1 --chain-id testing-1 --deposit 1000000000000000000stake -y 
 
 # sleep 7
 # onomyd tx gov vote 1 yes  --from validator1 --keyring-backend test --home ~/.onomyd/validator1 --chain-id testing-1 -y 
 # onomyd tx gov vote 1 yes  --from validator2 --keyring-backend test --home ~/.onomyd/validator2 --chain-id testing-1 -y 
 # onomyd tx gov vote 1 yes  --from validator3 --keyring-backend test --home ~/.onomyd/validator3 --chain-id testing-1 -y 
-
-# sleep 15
-# echo "==================="
-
-# onomyd q bank balances onomy1wa3u4knw74r598quvzydvca42qsmk6jrc6uj7m
-# echo "==================="
-# onomyd tx psm swap-to-ist 100000000000000000000000000000usdt --from validator1 --keyring-backend test --home ~/.onomyd/validator1 --chain-id testing-1 -y
-
-# sleep 7
-
-# onomyd tx psm swap-to-stablecoin usdt 1000IST --from validator1 --keyring-backend test --home ~/.onomyd/validator1 --chain-id testing-1 -y
-
-# modulenema: 3CF27F7408755A5E12B08812B22AD88CB17322B5
-# onomy18ne87aqgw4d9uy4s3qfty2kc3jchxg44ec3vm5
