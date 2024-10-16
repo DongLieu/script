@@ -1,0 +1,11 @@
+
+killall realio-networkd || true
+rm -rf $HOME/.realio-network/
+
+cp -r $HOME/2/.realio-network $HOME/
+
+sed -i.bak 's/^persistent_peers = ".*"/persistent_peers = ""/' $HOME/.realio-network/config/config.toml 
+
+account="realio1jyrr9ga485mzdw6u7w7vcvcmhz8h6zq8w4vxzu,realio1824jpqunx75eaeqqgvvppv3ec2gvevulf7722n"
+
+realio-networkd  testnet-inplace realionetwork_3301-1 realiovaloper1jyrr9ga485mzdw6u7w7vcvcmhz8h6zq86p0un6 --accounts-to-fund=$account --home=$HOME/.realio-network/ --skip-confirmation

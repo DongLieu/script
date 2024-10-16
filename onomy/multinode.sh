@@ -27,15 +27,15 @@ echo $mnemonic2 | onomyd keys add validator2 --recover --keyring-backend=test --
 echo $mnemonic3| onomyd keys add validator3 --recover --keyring-backend=test --home=$HOME/.onomyd/validator3
 
 # create validator node with tokens to transfer to the three other nodes
-onomyd genesis add-genesis-account $(onomyd keys show validator1 -a --keyring-backend=test --home=$HOME/.onomyd/validator1) 10000000000000000000000000000000stake,10000000000000000000000000000000usdt --home=$HOME/.onomyd/validator1 
-onomyd genesis add-genesis-account $(onomyd keys show validator2 -a --keyring-backend=test --home=$HOME/.onomyd/validator2) 10000000000000000000000000000000stake,10000000000000000000000000000000usdt --home=$HOME/.onomyd/validator1 
-onomyd genesis add-genesis-account $(onomyd keys show validator3 -a --keyring-backend=test --home=$HOME/.onomyd/validator3) 10000000000000000000000000000000stake,10000000000000000000000000000000usdt --home=$HOME/.onomyd/validator1 
-onomyd genesis add-genesis-account $(onomyd keys show validator1 -a --keyring-backend=test --home=$HOME/.onomyd/validator1) 10000000000000000000000000000000stake,10000000000000000000000000000000usdt --home=$HOME/.onomyd/validator2 
-onomyd genesis add-genesis-account $(onomyd keys show validator2 -a --keyring-backend=test --home=$HOME/.onomyd/validator2) 10000000000000000000000000000000stake,10000000000000000000000000000000usdt --home=$HOME/.onomyd/validator2 
-onomyd genesis add-genesis-account $(onomyd keys show validator3 -a --keyring-backend=test --home=$HOME/.onomyd/validator3) 10000000000000000000000000000000stake,10000000000000000000000000000000usdt --home=$HOME/.onomyd/validator2 
-onomyd genesis add-genesis-account $(onomyd keys show validator1 -a --keyring-backend=test --home=$HOME/.onomyd/validator1) 10000000000000000000000000000000stake,10000000000000000000000000000000usdt --home=$HOME/.onomyd/validator3 
-onomyd genesis add-genesis-account $(onomyd keys show validator2 -a --keyring-backend=test --home=$HOME/.onomyd/validator2) 10000000000000000000000000000000stake,10000000000000000000000000000000usdt --home=$HOME/.onomyd/validator3 
-onomyd genesis add-genesis-account $(onomyd keys show validator3 -a --keyring-backend=test --home=$HOME/.onomyd/validator3) 10000000000000000000000000000000stake,10000000000000000000000000000000usdt --home=$HOME/.onomyd/validator3 
+onomyd genesis add-genesis-account $(onomyd keys show validator1 -a --keyring-backend=test --home=$HOME/.onomyd/validator1) 10000000000000000000000000000000stake,10000000000000000000000000000000usdt,10000000000anom --home=$HOME/.onomyd/validator1 
+onomyd genesis add-genesis-account $(onomyd keys show validator2 -a --keyring-backend=test --home=$HOME/.onomyd/validator2) 10000000000000000000000000000000stake,10000000000000000000000000000000usdt,10000000000anom --home=$HOME/.onomyd/validator1 
+onomyd genesis add-genesis-account $(onomyd keys show validator3 -a --keyring-backend=test --home=$HOME/.onomyd/validator3) 10000000000000000000000000000000stake,10000000000000000000000000000000usdt,10000000000anom --home=$HOME/.onomyd/validator1 
+onomyd genesis add-genesis-account $(onomyd keys show validator1 -a --keyring-backend=test --home=$HOME/.onomyd/validator1) 10000000000000000000000000000000stake,10000000000000000000000000000000usdt,10000000000anom --home=$HOME/.onomyd/validator2 
+onomyd genesis add-genesis-account $(onomyd keys show validator2 -a --keyring-backend=test --home=$HOME/.onomyd/validator2) 10000000000000000000000000000000stake,10000000000000000000000000000000usdt,10000000000anom --home=$HOME/.onomyd/validator2 
+onomyd genesis add-genesis-account $(onomyd keys show validator3 -a --keyring-backend=test --home=$HOME/.onomyd/validator3) 10000000000000000000000000000000stake,10000000000000000000000000000000usdt,10000000000anom --home=$HOME/.onomyd/validator2 
+onomyd genesis add-genesis-account $(onomyd keys show validator1 -a --keyring-backend=test --home=$HOME/.onomyd/validator1) 10000000000000000000000000000000stake,10000000000000000000000000000000usdt,10000000000anom --home=$HOME/.onomyd/validator3 
+onomyd genesis add-genesis-account $(onomyd keys show validator2 -a --keyring-backend=test --home=$HOME/.onomyd/validator2) 10000000000000000000000000000000stake,10000000000000000000000000000000usdt,10000000000anom --home=$HOME/.onomyd/validator3 
+onomyd genesis add-genesis-account $(onomyd keys show validator3 -a --keyring-backend=test --home=$HOME/.onomyd/validator3) 10000000000000000000000000000000stake,10000000000000000000000000000000usdt,10000000000anom --home=$HOME/.onomyd/validator3 
 onomyd genesis gentx validator1 1000000000000000000000stake --keyring-backend=test --home=$HOME/.onomyd/validator1 --chain-id=testing-1
 onomyd genesis gentx validator2 1000000000000000000000stake --keyring-backend=test --home=$HOME/.onomyd/validator2 --chain-id=testing-1
 onomyd genesis gentx validator3 1000000000000000000000stake --keyring-backend=test --home=$HOME/.onomyd/validator3 --chain-id=testing-1
@@ -101,6 +101,7 @@ update_test_genesis () {
 }
 
 update_test_genesis '.app_state["gov"]["voting_params"]["voting_period"] = "15s"'
+update_test_genesis '.app_state["gov"]["params"]["voting_period"] = "15s"'
 
 cp $HOME/.onomyd/validator1/config/genesis.json $HOME/.onomyd/validator2/config/genesis.json
 cp $HOME/.onomyd/validator1/config/genesis.json $HOME/.onomyd/validator3/config/genesis.json
@@ -123,23 +124,23 @@ screen -S onomy3 -t onomy3 -d -m onomyd start --home=$HOME/.onomyd/validator3
 
 sleep 7
 
-onomyd tx bank send onomy1wa3u4knw74r598quvzydvca42qsmk6jrc6uj7m onomy1w7f3xx7e75p4l7qdym5msqem9rd4dyc4y47xsd 100000stake --keyring-backend=test --chain-id=testing-1 -y --home=$HOME/.onomyd/validator1 --fees 10stake
+# onomyd tx bank send onomy1wa3u4knw74r598quvzydvca42qsmk6jrc6uj7m onomy1w7f3xx7e75p4l7qdym5msqem9rd4dyc4y47xsd 100000stake --keyring-backend=test --chain-id=testing-1 -y --home=$HOME/.onomyd/validator1 --fees 10stake
 
 onomyd q staking validators
 onomyd keys list --keyring-backend=test --home=$HOME/.onomyd/validator1
 onomyd keys list --keyring-backend=test --home=$HOME/.onomyd/validator2
 onomyd keys list --keyring-backend=test --home=$HOME/.onomyd/validator3
 
-# sleep 7
+sleep 7
 # killall onomyd || true
 # onomyd testnet testing-1  onomyvaloper1wa3u4knw74r598quvzydvca42qsmk6jrya79zd --accounts-to-fund="onomy1wa3u4knw74r598quvzydvca42qsmk6jrc6uj7m,onomy1w7f3xx7e75p4l7qdym5msqem9rd4dyc4y47xsd,onomy1g9v3zjt6rfkwm4s8sw9wu4jgz9me8pn2ygn94a" --home=$HOME/.onomyd/validator1 --skip-confirmation
 
-# onomyd tx gov submit-proposal add-stable-coin "d" "d" "usdt" "100000000000000000000000000000" "1" "0.001" "0.001" onomy1wa3u4knw74r598quvzydvca42qsmk6jrc6uj7m  10000000000000000000stake --keyring-backend=test  --home=$HOME/.onomyd/validator1 --from onomy1wa3u4knw74r598quvzydvca42qsmk6jrc6uj7m -y --chain-id testing-1
+onomyd tx gov submit-proposal  /Users/donglieu/script/onomy/upgrade.json --keyring-backend=test  --home=$HOME/.onomyd/validator1 --from onomy1wa3u4knw74r598quvzydvca42qsmk6jrc6uj7m -y --chain-id testing-1 --fees 20stake
 
-# sleep 7
-# onomyd tx gov vote 1 yes  --from validator1 --keyring-backend test --home ~/.onomyd/validator1 --chain-id testing-1 -y 
-# onomyd tx gov vote 1 yes  --from validator2 --keyring-backend test --home ~/.onomyd/validator2 --chain-id testing-1 -y 
-# onomyd tx gov vote 1 yes  --from validator3 --keyring-backend test --home ~/.onomyd/validator3 --chain-id testing-1 -y 
+sleep 7
+onomyd tx gov vote 1 yes  --from validator1 --keyring-backend test --home ~/.onomyd/validator1 --chain-id testing-1 -y --fees 20stake
+onomyd tx gov vote 1 yes  --from validator2 --keyring-backend test --home ~/.onomyd/validator2 --chain-id testing-1 -y --fees 20stake
+onomyd tx gov vote 1 yes  --from validator3 --keyring-backend test --home ~/.onomyd/validator3 --chain-id testing-1 -y --fees 20stake
 
 # sleep 15
 # echo "==================="

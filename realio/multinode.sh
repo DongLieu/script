@@ -18,12 +18,15 @@ realio-networkd init  --chain-id realio_3-2 validator3 --home=$HOME/.realio-netw
 
 # create keys for all three validators
 # realio-networkd keys add validator1 --keyring-backend=test --home=$HOME/.realio-network/validator1/Users/donglieu/script/keys/mnemonic1
-pwd
-echo "$(cat ./keys/mnemonic1)"| realio-networkd keys add validator1 --keyring-backend test --recover --home=$HOME/.realio-network/validator1
+m1="salmon fashion film curve cause palace ancient honey cactus donkey inhale awful resource run junior evil impact border off jacket behave rifle agree eagle"
+m2="method kiss layer inherit grain define lecture document corn giraffe galaxy salute ensure mixture release punch duty ridge comfort road cross short review trend"
+m3="original attract brass stumble poverty mobile route soup door blanket engage differ give arrest faint stadium impose outdoor shine wrist lion envelope regular pluck"
+
+echo $m1| realio-networkd keys add validator1 --keyring-backend test --recover --home=$HOME/.realio-network/validator1
 # realio-networkd keys add validator2 --keyring-backend=test --home=$HOME/.realio-network/validator2
-echo "$(cat ./keys/mnemonic2)"| realio-networkd keys add validator2 --keyring-backend test  --recover --home=$HOME/.realio-network/validator2
+echo $m2| realio-networkd keys add validator2 --keyring-backend test  --recover --home=$HOME/.realio-network/validator2
 # realio-networkd keys add validator3 --keyring-backend=test --home=$HOME/.realio-network/validator3
-echo "$(cat ./keys/mnemonic3)"| realio-networkd keys add validator3 --keyring-backend test  --recover --home=$HOME/.realio-network/validator3
+echo $m3| realio-networkd keys add validator3 --keyring-backend test  --recover --home=$HOME/.realio-network/validator3
 
 # create validator node with tokens to transfer to the three other nodes
 realio-networkd add-genesis-account $(realio-networkd keys show validator1 -a --keyring-backend=test --home=$HOME/.realio-network/validator1) 10000000000000000000000000000000stake,10000000000000000000000000000000osmo --home=$HOME/.realio-network/validator1 
@@ -103,9 +106,6 @@ sed -i -E 's|prometheus_listen_addr = ":26660"|prometheus_listen_addr = ":26620"
 cp $HOME/.realio-network/validator1/config/genesis.json $HOME/.realio-network/validator2/config/genesis.json
 cp $HOME/.realio-network/validator1/config/genesis.json $HOME/.realio-network/validator3/config/genesis.json
 
-# copy tendermint node id of validator1 to persistent peers of validator2-3 @192.168.0.18:26656
-# persistent_peers = "ed65ae9a3f73af0fc7b16904a2d4a7b212898938@192.168.0.18:21656"
-# realio-networkd tendermint show-node-id --home /Users/donglieu/script/realio/.realio-mainnet2/node1
 node1=$(realio-networkd tendermint show-node-id --home=$HOME/.realio-network/validator1)
 node2=$(realio-networkd tendermint show-node-id --home=$HOME/.realio-network/validator2)
 node3=$(realio-networkd tendermint show-node-id --home=$HOME/.realio-network/validator3)
