@@ -17,7 +17,7 @@ screen -S relayerd -t relayerd -d -m rly start --home /Users/donglieu/script/ibc
 
 sleep 7
 
-gaiad tx ibc-transfer transfer transfer channel-3 $(onomyd keys show val --keyring-backend test -a)  10000stake --from val --chain-id testing-2 --yes --keyring-backend test --gas 6000000 --fees 6000000stake --node tcp://127.0.0.1:26654
+gaiad tx ibc-transfer transfer transfer channel-1 $(onomyd keys show val --keyring-backend test -a)  10000stake --from val --chain-id testing-2 --yes --keyring-backend test --gas 6000000 --fees 6000000stake --node tcp://127.0.0.1:26654
 
 sleep 7
 
