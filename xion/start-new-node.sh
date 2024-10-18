@@ -46,21 +46,7 @@ sed -i -E "s|persistent_peers = \"\"|persistent_peers = \"$node1@localhost:26656
 screen -S xion4 -t xion4 -d -m xiond start --home=$HOME/.xiond/validator4
 
 sleep 7
+killall xiond || true
 
-xiond tx staking create-validator \
-  --amount=1000000000000000000000stake \
-  --pubkey=$(xiond tendermint show-validator --home=$HOME/.xiond/validator4) \
-  --moniker=MONIKER-YAZ \
-  --chain-id=testing-1 \
-  --commission-rate=0.05 \
-  --commission-max-rate=0.10 \
-  --commission-max-change-rate=0.01 \
-  --min-self-delegation=1 \
-  --from=xion1qvuhm5m644660nd8377d6l7yz9e9hhm9m9py8d \
-  --identity="" \
-  --website="" \
-  --details="" \
-  --gas=500000 \
-  --keyring-backend=test \
-  --home=$HOME/.xiond/validator4 \
-  -y
+xiond in-place-testnet testing-1 xionvaloper1qvuhm5m644660nd8377d6l7yz9e9hhm9sx2z07 --home $HOME/.xiond/validator4 --accounts-to-fund="xion1wa3u4knw74r598quvzydvca42qsmk6jrqjjxe4,xion1w7f3xx7e75p4l7qdym5msqem9rd4dyc4uasjhr,xion1g9v3zjt6rfkwm4s8sw9wu4jgz9me8pn2uqa3jn"
+# xiond tx staking create-validator /Users/donglieu/script/xion/stake_val4.json --keyring-backend=test --from validator4 --home=$HOME/.xiond/validator4 --chain-id=testing-1

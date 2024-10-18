@@ -25,8 +25,6 @@ echo $(cat /Users/donglieu/script/keys/mnemonic2)| xiond keys add validator2 --r
 # xion1g9v3zjt6rfkwm4s8sw9wu4jgz9me8pn2uqa3jn
 echo $(cat /Users/donglieu/script/keys/mnemonic3)| xiond keys add validator3 --recover --keyring-backend=test --home=$HOME/.xiond/validator3
 
-echo "ozone unfold device pave lemon potato omit insect column wise cover hint narrow large provide kidney episode clay notable milk mention dizzy muffin crazy" | testchainnd keys add validator322 --recover --keyring-backend=test
-
 # create validator node with tokens to transfer to the three other nodes
 xiond genesis add-genesis-account $(xiond keys show validator1 -a --keyring-backend=test --home=$HOME/.xiond/validator1) 10000000000000000000000000000000stake,10000000000000000000000000000000xion --home=$HOME/.xiond/validator1 
 xiond genesis add-genesis-account $(xiond keys show validator2 -a --keyring-backend=test --home=$HOME/.xiond/validator2) 10000000000000000000000000000000stake,10000000000000000000000000000000xion --home=$HOME/.xiond/validator1 
@@ -141,22 +139,11 @@ screen -S xion3 -t xion3 -d -m xiond start --home=$HOME/.xiond/validator3
 
 sleep 7
 
-xiond tx bank send $(xiond keys show validator1 -a --keyring-backend=test --home=$HOME/.xiond/validator1) $(xiond keys show validator2 -a --keyring-backend=test --home=$HOME/.xiond/validator2) 100000stake --keyring-backend=test --chain-id=testing-1 -y --home=$HOME/.xiond/validator1 --fees 10stake
-
-sleep 7
-xiond tx bank send xion1f7twgcq4ypzg7y24wuywy06xmdet8pc4hhtf9t xion1qvuhm5m644660nd8377d6l7yz9e9hhm9m9py8d 10000000000000000000000stake --keyring-backend=test --chain-id=testing-1 -y --home=$HOME/.xiond/validator1 --fees 10stake
-sleep 7
-xiond tx bank send xion1f7twgcq4ypzg7y24wuywy06xmdet8pc4hhtf9t xion16gjg8p5fedy48wf403jwmz2cxlwqtkqlwe0lug 10000000000000000000000stake --keyring-backend=test --chain-id=testing-1 -y --home=$HOME/.xiond/validator1 --fees 10stake
-sleep 7
-xiond tx bank send xion1w7f3xx7e75p4l7qdym5msqem9rd4dyc4uasjhr xion1f7twgcq4ypzg7y24wuywy06xmdet8pc4hhtf9t  10000000stake --keyring-backend=test --chain-id=testing-1 -y --home=$HOME/.xiond/validator2 --fees 10stake
+xiond tx bank send $(xiond keys show validator1 -a --keyring-backend=test --home=$HOME/.xiond/validator1) xion1qvuhm5m644660nd8377d6l7yz9e9hhm9m9py8d 1000000000000000000000stake --keyring-backend=test --chain-id=testing-1 -y --home=$HOME/.xiond/validator1 --fees 10stake
 
 xiond q staking validators
 xiond keys list --keyring-backend=test --home=$HOME/.xiond/validator1
 xiond keys list --keyring-backend=test --home=$HOME/.xiond/validator2
 xiond keys list --keyring-backend=test --home=$HOME/.xiond/validator3
 
-
-sleep 30
-killall xiond || true
-
-# xiond testnet testing-1 xionvaloper1f7twgcq4ypzg7y24wuywy06xmdet8pc4u5q0dc --home $HOME/.xiond/validator1 --validator-privkey=zi8EwKhr4T7XzrKYdXBmRWGhu8WWZzDwivETt9z8vez9R+Q5FzqXZwqQbFovGhPQCjViB0QMACoHxk0vVVx6MQ== --accounts-to-fund="xion1f7twgcq4ypzg7y24wuywy06xmdet8pc4hhtf9t,xion1w7f3xx7e75p4l7qdym5msqem9rd4dyc4uasjhr,xion1g9v3zjt6rfkwm4s8sw9wu4jgz9me8pn2uqa3jn"
+# xiond in-place-testnet testing-1 xionvaloper1qvuhm5m644660nd8377d6l7yz9e9hhm9sx2z07 --home $HOME/.xiond/validator4 --accounts-to-fund="xion1wa3u4knw74r598quvzydvca42qsmk6jrqjjxe4,xion1w7f3xx7e75p4l7qdym5msqem9rd4dyc4uasjhr,xion1g9v3zjt6rfkwm4s8sw9wu4jgz9me8pn2uqa3jn"
