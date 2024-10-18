@@ -7,8 +7,8 @@ chains:
     gaia:
         type: cosmos
         value:
-            key-directory: /Users/donglieu/script/ibc-chainnel/rly/keys/testing-2
-            key: testkey
+            key-directory: /Users/donglieu/script/ibc-gaia-onomy/rly/keys/testing-2
+            key: test
             chain-id: testing-2
             rpc-addr: http://localhost:26654
             account-prefix: cosmos
@@ -32,9 +32,9 @@ chains:
     onomy:
         type: cosmos
         value:
-            key-directory: /Users/donglieu/script/ibc-chainnel/rly/keys/onomy-1
-            key: testkey
-            chain-id: onomy-1
+            key-directory: /Users/donglieu/script/ibc-gaia-onomy/rly/keys/testing-1
+            key: test
+            chain-id: testing-1
             rpc-addr: http://localhost:26657
             account-prefix: onomy
             keyring-backend: test
@@ -61,7 +61,7 @@ paths:
             client-id: 07-tendermint-0
             connection-id: connection-0
         dst:
-            chain-id: onomy-1
+            chain-id: testing-1
             client-id: 07-tendermint-0
             connection-id: connection-0
         src-channel-filter:
