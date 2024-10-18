@@ -13,7 +13,7 @@ terrad keys add test3 --keyring-backend test --algo secp256k1
 echo >&1 "\n"
 
 # init chain
-terrad init test-1 --chain-id testt
+terrad init test-1 --chain-id testing-1
 
 # Change parameter token denominations to stake
 cat $HOME/.terra/config/genesis.json | jq '.app_state["staking"]["params"]["bond_denom"]="stake"' > $HOME/.terra/config/tmp_genesis.json && mv $HOME/.terra/config/tmp_genesis.json $HOME/.terra/config/genesis.json
@@ -36,7 +36,7 @@ terrad add-genesis-account test2 1000000000stake --keyring-backend test
 terrad add-genesis-account test3 50000000stake --keyring-backend test
 
 # Sign genesis transaction
-terrad gentx val 1000000stake --keyring-backend test --chain-id testt
+terrad gentx val 1000000stake --keyring-backend test --chain-id testing-1
 
 # Collect genesis tx
 terrad collect-gentxs
@@ -45,20 +45,4 @@ terrad collect-gentxs
 terrad validate-genesis
 
 # Start the node (remove the --pruning=nothing flag if historical queries are not needed)
-terrad start 
-
-# sleep 7
-
-# terrad q bank balances $(terrad keys show val -a --keyring-backend=test)
-
-# terrad keys add newkey --keyring-backend test --algo secp256k1
-# terrad keys list --keyring-backend test
-
-# terrad tx bank send $(terrad keys show val -a --keyring-backend=test) $(terrad keys show newkey -a --keyring-backend=test) 1000stake --keyring-backend=test --chain-id terra-test-a -y
-# terrad tx bank send $(terrad keys show val -a --keyring-backend=test) $(terrad keys show newkey -a --keyring-backend=test) 1luna --keyring-backend=test --chain-id terra-test-a -y
-
-# sleep 7
-# terrad keys add newkey --keyring-backend test --algo secp256k1
-# terrad q bank balances $(terrad keys show newkey -a --keyring-backend=test)
-# terrad q bank balances $(terrad keys show val -a --keyring-backend=test)
-# terrad tx bank send $(terrad keys show val -a --keyring-backend=test) $(terrad keys show newkey -a --keyring-backend=test) 1000juno --keyring-backend=test --chain-id terra-test-a -y
+# terrad start 
