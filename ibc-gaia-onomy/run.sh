@@ -15,6 +15,7 @@ screen -S gaia -t gaia -d -m gaiad start --pruning=nothing  --minimum-gas-prices
 
 sleep 7
 # setup rly
+echo "Setup relayer"
 /Users/donglieu/script/ibc-gaia-onomy/rly.sh
 
 sleep 7
