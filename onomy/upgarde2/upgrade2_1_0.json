@@ -5,17 +5,17 @@
    "@type": "/cosmos.upgrade.v1beta1.MsgSoftwareUpgrade",
    "authority": "onomy10d07y265gmmuvt4z0w9aw880jnsr700jqr8n8k",
    "plan": {
-    "name": "v2.1.1",
+    "name": "v2.1.0",
     "time": "0001-01-01T00:00:00Z",
-    "height": "40",
+    "height": "10066300",
     "info": "asdasda",
     "upgraded_client_state": null
    }
   }
  ],
  "metadata": "ipfs://CID",
- "deposit": "100000000000000stake",
- "title": "v2.1.1",
- "summary": "v2.1.1",
+ "deposit": "500000000000000000000anom",
+ "title": "v2.1.0",
+ "summary": "v2.1.0",
  "expedited": false
 }

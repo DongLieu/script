@@ -40,6 +40,7 @@ echo "Balances gaia:"
 
 gaiad q bank balances $(gaiad keys show val --keyring-backend test -a) --node tcp://127.0.0.1:26654
 
+sleep 7
 echo "Balances onomy2:"
 onomyd q bank balances $(onomyd keys show val --keyring-backend test -a) 
 

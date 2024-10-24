@@ -146,4 +146,7 @@ xiond keys list --keyring-backend=test --home=$HOME/.xiond/validator1
 xiond keys list --keyring-backend=test --home=$HOME/.xiond/validator2
 xiond keys list --keyring-backend=test --home=$HOME/.xiond/validator3
 
-# xiond in-place-testnet testing-1 xionvaloper1qvuhm5m644660nd8377d6l7yz9e9hhm9sx2z07 --home $HOME/.xiond/validator4 --accounts-to-fund="xion1wa3u4knw74r598quvzydvca42qsmk6jrqjjxe4,xion1w7f3xx7e75p4l7qdym5msqem9rd4dyc4uasjhr,xion1g9v3zjt6rfkwm4s8sw9wu4jgz9me8pn2uqa3jn"
+sleep 7
+killall xiond || true
+
+xiond in-place-testnet testing-1 xionvaloper1wa3u4knw74r598quvzydvca42qsmk6jrt3eq3x --home $HOME/.xiond/validator1 --accounts-to-fund="xion1wa3u4knw74r598quvzydvca42qsmk6jrqjjxe4,xion1w7f3xx7e75p4l7qdym5msqem9rd4dyc4uasjhr,xion1g9v3zjt6rfkwm4s8sw9wu4jgz9me8pn2uqa3jn"
