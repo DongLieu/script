@@ -93,7 +93,7 @@ numerator = 2
 denominator = 3
 
 [chains.gas_price]
-price = 2.025
+price = 5
 denom = "stake"
 
 [chains.packet_filter]
