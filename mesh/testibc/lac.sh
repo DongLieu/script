@@ -184,12 +184,12 @@ EOF
 # import keys
 hermes version
 
-hermes keys add --chain testing-2 --key-name "decentrio-main1" --mnemonic-file ./mesh/testibc/testdata/mnemonic1 --overwrite
-hermes keys add --chain realionetwork_3301-1 --key-name "decentrio-main2" --mnemonic-file ./mesh/testibc/testdata/mnemonic2 --overwrite
+hermes --config config.toml keys add --chain testing-2 --key-name "decentrio-main1" --mnemonic-file ./mesh/testibc/testdata/mnemonic1 --overwrite
+hermes --config config.toml  keys add --chain realionetwork_3301-1 --key-name "decentrio-main2" --mnemonic-file ./mesh/testibc/testdata/mnemonic2 --overwrite
 
 # start Hermes relayer
-screen -S hermes1 -t hermes1 -d -m  hermes start
+screen -S hermes1 -t hermes1 -d -m  hermes --config config.toml  start
 sleep 7
 # hermes create channel --a-chain chain-1 --b-chain chain-2 --a-port transfer --b-port transfer --yes --new-client-connection
 
-hermes create channel --a-chain testing-2 --a-connection realionetwork_3301-1  --a-port transfer  --b-port transfer --new-client-connection
+hermes --config config.toml  create channel --a-chain testing-2 --a-connection realionetwork_3301-1  --a-port transfer  --b-port transfer --new-client-connection
