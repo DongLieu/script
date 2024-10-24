@@ -93,7 +93,7 @@ numerator = 2
 denominator = 3
 
 [chains.gas_price]
-price = 0.025
+price = 2.025
 denom = "stake"
 
 [chains.packet_filter]
@@ -155,7 +155,7 @@ denominator = 3
 
 [chains.gas_price]
 price = 1
-denom = "stake"
+denom = "ario"
 
 [chains.packet_filter]
 policy = "allow"
