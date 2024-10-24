@@ -25,18 +25,18 @@ gaiad genesis validate-genesis
 
 # validator2
 VALIDATOR2_CONFIG=$HOME/.gaia/config/config.toml
-sed -i -E 's|tcp://127.0.0.1:26658|tcp://127.0.0.1:26646|g' $VALIDATOR2_CONFIG
-sed -i -E 's|tcp://127.0.0.1:26657|tcp://127.0.0.1:26645|g' $VALIDATOR2_CONFIG
-sed -i -E 's|tcp://0.0.0.0:26656|tcp://0.0.0.0:26644|g' $VALIDATOR2_CONFIG
+sed -i -E 's|tcp://127.0.0.1:26658|tcp://127.0.0.1:26546|g' $VALIDATOR2_CONFIG
+sed -i -E 's|tcp://127.0.0.1:26657|tcp://127.0.0.1:26545|g' $VALIDATOR2_CONFIG
+sed -i -E 's|tcp://0.0.0.0:26656|tcp://0.0.0.0:26544|g' $VALIDATOR2_CONFIG
 sed -i -E 's|allow_duplicate_ip = false|allow_duplicate_ip = true|g' $VALIDATOR2_CONFIG
 sed -i -E 's|prometheus = false|prometheus = true|g' $VALIDATOR2_CONFIG
-sed -i -E 's|prometheus_listen_addr = ":26660"|prometheus_listen_addr = ":26620"|g' $VALIDATOR2_CONFIG
+sed -i -E 's|prometheus_listen_addr = ":26560"|prometheus_listen_addr = ":26520"|g' $VALIDATOR2_CONFIG
 
 VALIDATOR2_APP_TOML=$HOME/.gaia/config/app.toml
-sed -i -E 's|tcp://localhost:1317|tcp://localhost:1313|g' $VALIDATOR2_APP_TOML
-sed -i -E 's|localhost:9090|localhost:9082|g' $VALIDATOR2_APP_TOML
-sed -i -E 's|localhost:9091|localhost:9081|g' $VALIDATOR2_APP_TOML
-sed -i -E 's|tcp://0.0.0.0:10337|tcp://0.0.0.0:10377|g' $VALIDATOR2_APP_TOML
+sed -i -E 's|tcp://localhost:1317|tcp://localhost:1213|g' $VALIDATOR2_APP_TOML
+sed -i -E 's|localhost:9090|localhost:8982|g' $VALIDATOR2_APP_TOML
+sed -i -E 's|localhost:9091|localhost:8981|g' $VALIDATOR2_APP_TOML
+sed -i -E 's|tcp://0.0.0.0:10337|tcp://0.0.0.0:10277|g' $VALIDATOR2_APP_TOML
 
 # Start the node (remove the --pruning=nothing flag if historical queries are not needed)
 gaiad start --pruning=nothing  --minimum-gas-prices=0.0001stake
