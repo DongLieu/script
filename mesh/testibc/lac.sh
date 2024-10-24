@@ -192,4 +192,4 @@ screen -S hermes1 -t hermes1 -d -m  hermes --config config.toml  start
 sleep 7
 # hermes create channel --a-chain chain-1 --b-chain chain-2 --a-port transfer --b-port transfer --yes --new-client-connection
 
-hermes --config config.toml  create channel --a-chain testing-2 --a-connection realionetwork_3301-1  --a-port transfer  --b-port transfer --new-client-connection
+hermes --config config.toml create channel --a-chain testing-2 --a-port transfer --b-chain  realionetwork_3301-1 --b-port transfer --new-client-connection
