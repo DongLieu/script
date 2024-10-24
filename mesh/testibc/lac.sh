@@ -109,8 +109,8 @@ list = [
 
 [chains.dynamic_gas_price]
 enabled = true
-multiplier = 1.1
-max = 0.6
+multiplier = 2
+max = 10
 
 [chains.address_type]
 derivation = "cosmos"
