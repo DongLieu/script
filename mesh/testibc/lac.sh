@@ -120,7 +120,7 @@ derivation = "cosmos"
 [[chains]]
 type = "CosmosSdk"
 id = "realionetwork_3301-1"
-rpc_addr = "http://localhost:26654"
+rpc_addr = "http://localhost:26645"
 grpc_addr = "http://localhost:9082"
 rpc_timeout = "10s"
 trusted_node = true
@@ -146,7 +146,7 @@ allow_ccq = true
 [chains.event_source]
 mode = "push"
 interval = "100ms"
-url= "ws://localhost:26654/websocket"
+url= "ws://localhost:26645/websocket"
 max_retries = 4
 
 [chains.trust_threshold]
