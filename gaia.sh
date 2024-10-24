@@ -39,4 +39,4 @@ sed -i -E 's|localhost:9091|localhost:8981|g' $VALIDATOR2_APP_TOML
 sed -i -E 's|tcp://0.0.0.0:10337|tcp://0.0.0.0:10277|g' $VALIDATOR2_APP_TOML
 
 # Start the node (remove the --pruning=nothing flag if historical queries are not needed)
-gaiad start --pruning=nothing  --minimum-gas-prices=0.0001stake
+# gaiad start --pruning=nothing  --minimum-gas-prices=0.0001stake
