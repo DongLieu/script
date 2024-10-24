@@ -3,10 +3,10 @@
 set -ex
 
 # initialize Hermes relayer configuration
-touch ~/.hermes/config.toml
+touch config.toml
 
 # setup Hermes relayer configuration
-tee  ~/.hermes/config.toml <<EOF
+tee  config.toml <<EOF
 [global]
 log_level = "info"
 
