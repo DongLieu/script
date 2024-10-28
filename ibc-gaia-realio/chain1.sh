@@ -1,4 +1,3 @@
-#!/bin/bash
 killall realio-networkd || true
 rm -rf $HOME/.realio-network
 m1="salmon fashion film curve cause palace ancient honey cactus donkey inhale awful resource run junior evil impact border off jacket behave rifle agree eagle"
@@ -21,8 +20,8 @@ cat $HOME/.realio-network/config/genesis.json | jq '.app_state["gov"]["deposit_p
 cat $HOME/.realio-network/config/genesis.json | jq '.app_state["mint"]["params"]["mint_denom"]="stake"' > $HOME/.realio-network/config/tmp_genesis.json && mv $HOME/.realio-network/config/tmp_genesis.json $HOME/.realio-network/config/genesis.json
 
 # Allocate genesis accounts (cosmos formatted addresses)
-realio-networkd  add-genesis-account realio1jyrr9ga485mzdw6u7w7vcvcmhz8h6zq8w4vxzu 1000000000000000000000000stake --keyring-backend test
-realio-networkd  add-genesis-account realio1824jpqunx75eaeqqgvvppv3ec2gvevulf7722n 1000000000000000000stake --keyring-backend test
+realio-networkd  add-genesis-account realio1jyrr9ga485mzdw6u7w7vcvcmhz8h6zq8w4vxzu 1000000000000000000000000stake,500000000000000000000ario --keyring-backend test
+realio-networkd  add-genesis-account realio1824jpqunx75eaeqqgvvppv3ec2gvevulf7722n 1000000000000000000stake,500000000000000000ario --keyring-backend test
 
 # # # # Sign genesis transaction
 realio-networkd  gentx val1  100000000000000000000000stake --keyring-backend test --chain-id realionetwork_3301-1
@@ -33,9 +32,18 @@ realio-networkd  collect-gentxs
 # # # Run this to ensure everything worked and that the genesis file is setup correctly
 realio-networkd  validate-genesis
 
+update_test_genesis () {
+    # EX: update_test_genesis '.consensus_params["block"]["max_gas"]="100000000"'
+    cat $HOME/.realio-network/config/genesis.json | jq "$1" > tmp.json && mv tmp.json $HOME/.realio-network/config/genesis.json
+}
+
+update_test_genesis '.app_state["gov"]["voting_params"]["voting_period"] = "15s"'
+update_test_genesis '.app_state["gov"]["deposit_params"]["max_deposit_period"] = "15s"'
+update_test_genesis '.app_state["evm"]["params"]["evm_denom"] = "stake"'
+
 # # # Start the node (remove the --pruning=nothing flag if historical queries are not needed)
 # screen -S realio -t realio -d -m 
-realio-networkd start
+# realio-networkd start
 
 # sleep 7
 

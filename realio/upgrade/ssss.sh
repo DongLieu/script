@@ -14,7 +14,7 @@ realio-networkd tx staking delegate realiovaloper1jyrr9ga485mzdw6u7w7vcvcmhz8h6z
 realio-networkd tx multistaking delegate realiovaloper1jyrr9ga485mzdw6u7w7vcvcmhz8h6zq86p0un6 10000000000000000ario --from val1 --keyring-backend test --chain-id realionetwork_3301-1 -y --gas 500000 --gas-prices 500ario,1000stake
 
 
-realio-networkd tx bank send val1 realio1j7qsamh9t7mynehxz2svfrpqglyeexty762dyr 17003769757652020228568450937ario,100000stake --from val1 --keyring-backend test --chain-id realionetwork_3301-1 -y --gas 500000 --gas-prices 500ario,1000stake
+realio-networkd tx bank send val1 realio1j7qsamh9t7mynehxz2svfrpqglyeexty762dyr 17003769757652020228568450937ario,100000stake --from val1 --keyring-backend test --chain-id realionetwork_3301-1 -y coddd --gas-prices 500ario,1000stake
 
 realio-networkd tx bank send val2 realio1j7qsamh9t7mynehxz2svfrpqglyeexty762dyr 17003769757652020228568450937ario,10000stake --from val2 --keyring-backend test --chain-id realionetwork_3301-1 -y --gas 500000 --gas-prices 500ario,1000stake
 

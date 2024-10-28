@@ -1,0 +1,65 @@
+global:
+    api-listen-addr: :5183
+    timeout: 10s
+    memo: ""
+    light-cache-size: 20
+chains:
+    gaia:
+        type: cosmos
+        value:
+            key-directory: /Users/donglieu/script/ibc-gaia-realio/rly/keys/testing-2
+            key: test
+            chain-id: testing-2
+            rpc-addr: http://localhost:26654
+            account-prefix: cosmos
+            keyring-backend: test
+            gas-adjustment: 1.2
+            gas-prices: 1stake
+            min-gas-amount: 400000
+            max-gas-amount: 4000000
+            debug: false
+            timeout: 20s
+            block-timeout: ""
+            output-format: json
+            sign-mode: direct
+            extra-codecs: []
+            coin-type: null
+            signing-algorithm: ""
+            broadcast-mode: batch
+            min-loop-duration: 0s
+            extension-options: []
+            feegrants: null
+    realio-network:
+        type: cosmos
+        value:
+            key-directory: /Users/donglieu/script/ibc-gaia-realio/rly/keys/realionetwork_3301-1
+            key: test
+            chain-id: realionetwork_3301-1
+            rpc-addr: http://localhost:26657
+            account-prefix: realio
+            keyring-backend: test
+            gas-adjustment: 1.2
+            gas-prices: 10000000000stake
+            min-gas-amount: 400000
+            max-gas-amount: 4000000
+            debug: false
+            timeout: 20s
+            block-timeout: ""
+            output-format: json
+            sign-mode: direct
+            extra-codecs: []
+            coin-type: null
+            signing-algorithm: ""
+            broadcast-mode: batch
+            min-loop-duration: 0s
+            extension-options: []
+            feegrants: null
+paths:
+    demo:
+        src:
+            chain-id: testing-2
+        dst:
+            chain-id: realionetwork_3301-1
+        src-channel-filter:
+            rule: ""
+            channel-list: []
