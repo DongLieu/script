@@ -1,0 +1,20 @@
+{
+    "messages": [
+     {
+      "@type": "/cosmos.upgrade.v1beta1.MsgSoftwareUpgrade",
+      "authority": "onomy10d07y265gmmuvt4z0w9aw880jnsr700jqr8n8k",
+      "plan": {
+       "name": "v2.1.0",
+       "time": "2024-9-11T14:00:00Z",
+       "height": "10",
+       "info": "https://github.com/onomyprotocol/onomy/releases/tag/v2.1.0",
+       "upgraded_client_state": null
+      }
+     }
+    ],
+    "metadata": "ipfs://CID",
+    "deposit": "5000000000000000000stake",
+    "title": "Software Upgrade v2.1.0",
+    "summary": "Software Upgrade v2.1.0. This upgrade moves the DAO Treasury to the Community Pool and contains IBC fixes. The upgrade is estimate to take place at around 16:00 UTC Nov 1st.",
+    "expedited": false
+   }
