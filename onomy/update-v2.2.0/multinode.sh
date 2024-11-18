@@ -104,6 +104,7 @@ update_test_genesis () {
 update_test_genesis '.app_state["gov"]["voting_params"]["voting_period"] = "15s"'
 update_test_genesis '.app_state["gov"]["params"]["voting_period"] = "15s"'
 update_test_genesis '.app_state["staking"]["params"]["bond_denom"] = "anom"'
+update_test_genesis '.app_state["staking"]["params"]["unbonding_time"] = "30s"'
 
 # Cập nhật tất cả các phần tử của min_deposit và expedited_min_deposit
 update_test_genesis '.app_state["gov"]["params"]["min_deposit"] |= map(if .denom == "stake" then .denom = "anom" else . end)'
