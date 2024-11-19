@@ -20,5 +20,21 @@ onomyd genesis collect-gentxs
 onomyd genesis validate-genesis
 
 sed -i -E 's|minimum-gas-prices = ""|minimum-gas-prices = "0.0001stake"|g' $HOME/.onomy/config/app.toml
+
+update_test_genesis () {
+    # Ví dụ: update_test_genesis '.consensus_params["block"]["max_gas"]="100000000"'
+    cat $HOME/.onomy/config/genesis.json | jq "$1" > tmp.json && mv tmp.json $HOME/.onomy/config/genesis.json
+}
+
+# Cập nhật các trường trong genesis.json
+update_test_genesis '.app_state["gov"]["voting_params"]["voting_period"] = "150s"'
+update_test_genesis '.app_state["gov"]["params"]["voting_period"] = "150s"'
+# update_test_genesis '.app_state["staking"]["params"]["bond_denom"] = "anom"'
+update_test_genesis '.app_state["staking"]["params"]["unbonding_time"] = "150s"'
+
+# Cập nhật tất cả các phần tử của min_deposit và expedited_min_deposit
+update_test_genesis '.app_state["gov"]["params"]["min_deposit"] |= map(if .denom == "stake" then .denom = "anom" else . end)'
+update_test_genesis '.app_state["gov"]["params"]["expedited_min_deposit"] |= map(if .denom == "stake" then .denom = "anom" else . end)'
+
 # screen -S xionx -t xionx -d -m
-# onomyd start MsgChannelOpenInit
+# onomyd start 
