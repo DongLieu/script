@@ -12,7 +12,7 @@ gaiad init gaia-1 --chain-id testing-2
 echo "$mnm_val"| gaiad keys add val --recover --keyring-backend test 
 
 # Allocate genesis accounts (cosmos formatted addresses)
-gaiad genesis add-genesis-account val 100000000000000000000000000stake,1000000000000000000uatom --keyring-backend test
+gaiad genesis add-genesis-account val 10000000000000000000000000000000stake,1000000000000000000uatom --keyring-backend test
 
 # Sign genesis transaction
 gaiad genesis gentx val 1000000000000000000000stake --keyring-backend test --chain-id testing-2

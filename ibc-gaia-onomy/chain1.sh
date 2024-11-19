@@ -8,7 +8,7 @@ echo $(cat /Users/donglieu/script/keys/mnemonic2)| onomyd keys add val2 --keyrin
 
 # onomyd genesis add-genesis-account val 1000000000000stake --keyring-backend test
 # onomyd genesis add-genesis-account val2 1000000000000stake --keyring-backend test
-onomyd genesis add-genesis-account val 10000000000000000000000000000000stake --keyring-backend test
+onomyd genesis add-genesis-account val 10000000000000000000000000000000stake,10000000000000000000000000000000anom --keyring-backend test
 onomyd genesis add-genesis-account val2 10000000000000000000000000000000stake --keyring-backend test
 
 
