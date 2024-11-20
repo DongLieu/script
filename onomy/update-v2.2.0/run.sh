@@ -18,6 +18,8 @@ onomyd  in-place-testnet onomy-mainnet-1  onomyvaloper1wa3u4knw74r598quvzydvca42
 # proposal
 
 sleep 7
+onomyd tx staking delegate onomyvaloper1wa3u4knw74r598quvzydvca42qsmk6jrya79zd 6000072359524523127229047209154anom --keyring-backend=test  --home=$HOME/.onomy --from val -y --chain-id onomy-mainnet-1 --fees 20stake
+sleep 7
 onomyd tx gov submit-proposal  /Users/donglieu/script/onomy/update-v2.2.0/upgrade2_2_0.json --keyring-backend=test  --home=$HOME/.onomy --from val -y --chain-id onomy-mainnet-1 --fees 20stake
 
 sleep 7 
