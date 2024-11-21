@@ -31,32 +31,18 @@ echo "Balances onomy1:"
 onomyd q bank balances $(onomyd keys show val --keyring-backend test -a) 
 sleep 7
 
-gaiad tx ibc-transfer transfer transfer channel-0 $(onomyd keys show val --keyring-backend test -a)  10000stake --from val --chain-id testing-2 --yes --keyring-backend test --gas 6000000 --fees 6000000stake --node tcp://127.0.0.1:26654
+gaiad tx ibc-transfer transfer transfer channel-0 $(onomyd keys show val --keyring-backend test -a)  10000000stake --from val --chain-id testing-2 --yes --keyring-backend test --gas 6000000 --fees 6000000stake --node tcp://127.0.0.1:26654
+onomyd tx ibc-transfer transfer transfer channel-0 cosmos1w7f3xx7e75p4l7qdym5msqem9rd4dyc4752spg  10000000anom --from val --chain-id testing-1 --yes --keyring-backend test --gas 6000000 --fees 6000000stake 
 
 sleep 14
 
-echo "Query balances2..."
-echo "Balances gaia:"
-#$(gaiad keys show val --keyring-backend test -a) cosmos1w7f3xx7e75p4l7qdym5msqem9rd4dyc4752spg
-gaiad q bank balances cosmos1w7f3xx7e75p4l7qdym5msqem9rd4dyc4752spg --node tcp://127.0.0.1:26654
-
 sleep 7
-echo "Balances onomy2:"
-onomyd q bank balances $(onomyd keys show val --keyring-backend test -a) 
-
-onomyd tx ibc-transfer transfer transfer channel-0 cosmos1w7f3xx7e75p4l7qdym5msqem9rd4dyc4752spg  10000anom --from val --chain-id testing-1 --yes --keyring-backend test --gas 6000000 --fees 6000000anom 
-sleep 7
-
-# echo "Query balances2..."
-# echo "Balances gaia:"
-#$(gaiad keys show val --keyring-backend test -a) cosmos1w7f3xx7e75p4l7qdym5msqem9rd4dyc4752spg
-# gaiad q bank balances cosmos1w7f3xx7e75p4l7qdym5msqem9rd4dyc4752spg --node tcp://127.0.0.1:26654
-
-sleep 7
-# echo "Balances onomy2:"
 gaiad q bank balances cosmos1w7f3xx7e75p4l7qdym5msqem9rd4dyc4752spg --node tcp://127.0.0.1:26654
 onomyd q bank balances $(onomyd keys show val --keyring-backend test -a) 
 
 
-# onomyd tx ibc-transfer transfer transfer channel-0 cosmos1w7f3xx7e75p4l7qdym5msqem9rd4dyc4752spg  10000ono --from val --chain-id testing-1 --yes --keyring-backend test --gas 6000000 --fees 6000000ono
+# onomyd tx ibc-transfer transfer transfer channel-0 cosmos1w7f3xx7e75p4l7qdym5msqem9rd4dyc4752spg  10000ono --from val --chain-id testing-1 --yes --keyring-backend test --gas 6000000 --fees 6000000stake
+
+# gaiad tx ibc-transfer transfer transfer channel-0 onomy1w7f3xx7e75p4l7qdym5msqem9rd4dyc4y47xsd  10000ibc/0EEDE4D6082034D6CD465BD65761C305AACC6FCA1246F87D6A3C1F5488D18A7B --from val --chain-id testing-2 --yes --keyring-backend test --gas 6000000 --fees 6000000stake --node tcp://127.0.0.1:26654
+
 # gaiad tx ibc-transfer transfer transfer channel-0 onomy1w7f3xx7e75p4l7qdym5msqem9rd4dyc4y47xsd  10000ibc/123276ED3F6C39D8A038A8B96A69DFF82AA131EB7B70EE17FBA1F52A088B743F --from val --chain-id testing-2 --yes --keyring-backend test --gas 6000000 --fees 6000000stake --node tcp://127.0.0.1:26654

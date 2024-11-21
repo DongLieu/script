@@ -14,7 +14,7 @@ rly keys add onomy test --home /Users/donglieu/script/ibc-gaia-onomy/rly
 rly paths new testing-2 testing-1 demo --home /Users/donglieu/script/ibc-gaia-onomy/rly
 
 gaiad tx bank send val $(rly keys show gaia test --home /Users/donglieu/script/ibc-gaia-onomy/rly) 100000000000000000000000000000stake --node http://localhost:26654 --fees 200000stake -y --keyring-backend test
-onomyd tx bank send val $(rly keys show onomy test --home /Users/donglieu/script/ibc-gaia-onomy/rly) 100000000000000000000000000000stake,100000000000000000000000000000anom -y --fees 200000anom --keyring-backend test --chain-id testing-1
+onomyd tx bank send val $(rly keys show onomy test --home /Users/donglieu/script/ibc-gaia-onomy/rly) 100000000000000000000000000000stake,100000000000000000000000000000anom -y --fees 200000stake --keyring-backend test --chain-id testing-1
 
 sleep 7
 rly tx clients demo --home /Users/donglieu/script/ibc-gaia-onomy/rly

@@ -39,7 +39,7 @@ chains:
             account-prefix: onomy
             keyring-backend: test
             gas-adjustment: 1.2
-            gas-prices: 1anom
+            gas-prices: 1stake
             min-gas-amount: 400000
             max-gas-amount: 4000000
             debug: false

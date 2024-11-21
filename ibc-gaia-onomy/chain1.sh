@@ -19,7 +19,7 @@ onomyd genesis collect-gentxs
 # onomyd validate
 onomyd genesis validate-genesis
 
-sed -i -E 's|minimum-gas-prices = ""|minimum-gas-prices = "0.0001anom"|g' $HOME/.onomy/config/app.toml
+sed -i -E 's|minimum-gas-prices = ""|minimum-gas-prices = "0.000stake"|g' $HOME/.onomy/config/app.toml
 
 update_test_genesis () {
     # Ví dụ: update_test_genesis '.consensus_params["block"]["max_gas"]="100000000"'
