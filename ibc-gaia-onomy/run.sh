@@ -39,10 +39,20 @@ sleep 14
 sleep 7
 gaiad q bank balances cosmos1w7f3xx7e75p4l7qdym5msqem9rd4dyc4752spg --node tcp://127.0.0.1:26654
 onomyd q bank balances $(onomyd keys show val --keyring-backend test -a) 
-
-
+onomyd q bank balances onomy1w7f3xx7e75p4l7qdym5msqem9rd4dyc4y47xsd
+sleep 7
+onomyd tx gov submit-proposal  /Users/donglieu/script/onomy/update-v2.2.0/upgrade2_2_0.json --keyring-backend=test  --home=$HOME/.onomyd/validator1 --from onomy1wa3u4knw74r598quvzydvca42qsmk6jrc6uj7m -y --chain-id testing-1 --fees 20stake
+sleep 7
+onomyd tx gov vote 1 yes  --from validator1 --keyring-backend test --home ~/.onomyd/validator1 --chain-id testing-1 -y --fees 20stake
 # onomyd tx ibc-transfer transfer transfer channel-0 cosmos1w7f3xx7e75p4l7qdym5msqem9rd4dyc4752spg  10000ono --from val --chain-id testing-1 --yes --keyring-backend test --gas 6000000 --fees 6000000stake
 
 # gaiad tx ibc-transfer transfer transfer channel-0 onomy1w7f3xx7e75p4l7qdym5msqem9rd4dyc4y47xsd  10000ibc/0EEDE4D6082034D6CD465BD65761C305AACC6FCA1246F87D6A3C1F5488D18A7B --from val --chain-id testing-2 --yes --keyring-backend test --gas 6000000 --fees 6000000stake --node tcp://127.0.0.1:26654
 
 # gaiad tx ibc-transfer transfer transfer channel-0 onomy1w7f3xx7e75p4l7qdym5msqem9rd4dyc4y47xsd  10000ibc/123276ED3F6C39D8A038A8B96A69DFF82AA131EB7B70EE17FBA1F52A088B743F --from val --chain-id testing-2 --yes --keyring-backend test --gas 6000000 --fees 6000000stake --node tcp://127.0.0.1:26654
+
+
+# gaiad tx ibc-transfer transfer transfer channel-0 onomy1w7f3xx7e75p4l7qdym5msqem9rd4dyc4y47xsd  9990000ibc/0EEDE4D6082034D6CD465BD65761C305AACC6FCA1246F87D6A3C1F5488D18A7B --from val --chain-id testing-2 --yes --keyring-backend test --gas 6000000 --fees 6000000stake --node tcp://127.0.0.1:26654
+
+# onomyd q bank balances onomy1w7f3xx7e75p4l7qdym5msqem9rd4dyc4y47xsd
+
+# onomyd q bank balances onomy1a53udazy8ayufvy0s434pfwjcedzqv34vdkn6t
