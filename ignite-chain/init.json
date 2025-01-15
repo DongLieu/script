@@ -1,0 +1,23 @@
+{
+    "members": [
+      {
+        "address": "cosmos1pr26h2vq9adq3acvh37pz6wtk65u3y8798scq0",
+        "weight": 1000
+      },
+      {
+        "address": "cosmos1j4p2xlg393rg4mma0058alzgvkrjdddd2f5fll",
+        "weight": 1000
+      },
+      {
+        "address": "cosmos1vaqh39cdex9sgr46ef0tdln5cn0hdyd3s0lx4l",
+        "weight": 1000
+      }
+    ],
+    "config": {
+      "threshold": 2000,
+      "quorum": 2000,
+      "voting_period": 86400,
+      "revote": false,
+      "early_execution": true
+    }
+  }

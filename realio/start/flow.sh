@@ -11,3 +11,8 @@ lz4 -c -d /Users/donglieu/Downloads/realio_8001000.tar.lz4  | tar -x -C $HOME/.r
 https://realio.rpc.decentrio.ventures/status?
 
 realio-networkd  testnet-inplace realionetwork_3301-1 realiovaloper17eu6f96fk6wqpdajgaqwp70jdxj2jjax4pqrey --accounts-to-fund=realio17eu6f96fk6wqpdajgaqwp70jdxj2jjaxp4regz,realio1982s57g5kadu2v4ygapne9vj0t7p9d597yr0m8
+
+
+lz4 -c -d /Users/donglieu/Downloads/realio-testnet_5098182.tar.lz4 | tar -x -C $HOME/.realio-network/
+
+5098190
