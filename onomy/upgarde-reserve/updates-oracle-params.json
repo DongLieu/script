@@ -1,0 +1,13 @@
+{
+    "messages": [
+    {
+      "@type": "/reserve.oracle.MsgUpdateParams",
+      "authority":"onomy10d07y265gmmuvt4z0w9aw880jnsr700jqr8n8k",
+      "params": {
+        "allowed_price_delay": "2592000s"
+      }
+    }],
+    "deposit": "500000000000000000000anom",
+    "title": "My proposal",
+    "summary": "A short summary of my proposal"
+  }
