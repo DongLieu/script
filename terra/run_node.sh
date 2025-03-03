@@ -62,3 +62,20 @@ terrad start
 # terrad q bank balances $(terrad keys show newkey -a --keyring-backend=test)
 # terrad q bank balances $(terrad keys show val -a --keyring-backend=test)
 # terrad tx bank send $(terrad keys show val -a --keyring-backend=test) $(terrad keys show newkey -a --keyring-backend=test) 1000juno --keyring-backend=test --chain-id terra-test-a -y
+
+
+terrad tx wasm store /Users/donglieu/253/rust-counter/artifacts/counter-aarch64.wasm --keyring-backend=test --chain-id testt --from val --gas 996208 -y
+
+
+terrad tx wasm instantiate 1 '{"count": "0"}' --label "counter" --keyring-backend=test --chain-id testt --from val --gas 996208 -y --admin terra17vn2hm5agm8tt9h8yvtmt2gvems6wk6y97drh4
+
+terrad query wasm contract-state smart terra14hj2tavq8fpesdwxxcu44rty3hh90vhujrvcmstl4zr3txmfvw9ssrc8au '{"get_count":{}}'
+terrad query wasm contract-state smart terra14hj2tavq8fpesdwxxcu44rty3hh90vhujrvcmstl4zr3txmfvw9ssrc8au '{"get_total_funds":{}}'
+
+
+terrad tx wasm execute terra14hj2tavq8fpesdwxxcu44rty3hh90vhujrvcmstl4zr3txmfvw9ssrc8au '{"increment":{}}' --amount 1000stake --from val --keyring-backend=test --chain-id testt --gas 996208 -y
+
+
+
+terrad query wasm contract-state smart terra14hj2tavq8fpesdwxxcu44rty3hh90vhujrvcmstl4zr3txmfvw9ssrc8au '{"get_count":{}}'
+terrad query wasm contract-state smart terra14hj2tavq8fpesdwxxcu44rty3hh90vhujrvcmstl4zr3txmfvw9ssrc8au '{"get_total_funds":{}}'
