@@ -13,9 +13,9 @@ mkdir $HOME/.injectived/validator2
 mkdir $HOME/.injectived/validator3
 
 # init all three validators
-injectived init --chain-id=testing-1 validator1 --home=$HOME/.injectived/validator1
-injectived init --chain-id=testing-1 validator2 --home=$HOME/.injectived/validator2
-injectived init --chain-id=testing-1 validator3 --home=$HOME/.injectived/validator3
+injectived genesis init --chain-id=testing-1 validator1 --home=$HOME/.injectived/validator1
+injectived genesis init --chain-id=testing-1 validator2 --home=$HOME/.injectived/validator2
+injectived genesis init --chain-id=testing-1 validator3 --home=$HOME/.injectived/validator3
 
 # create keys for all three validators
 injectived keys add validator1 --keyring-backend=test --home=$HOME/.injectived/validator1
@@ -23,22 +23,22 @@ injectived keys add validator2 --keyring-backend=test --home=$HOME/.injectived/v
 injectived keys add validator3 --keyring-backend=test --home=$HOME/.injectived/validator3
 
 # create validator node with tokens to transfer to the three other nodes
-injectived add-genesis-account $(injectived keys show validator1 -a --keyring-backend=test --home=$HOME/.injectived/validator1) 10000000000000000000000000000000stake,10000000000000000000000000000000inj --home=$HOME/.injectived/validator1 --chain-id=testing-1
-injectived add-genesis-account $(injectived keys show validator2 -a --keyring-backend=test --home=$HOME/.injectived/validator2) 10000000000000000000000000000000stake,10000000000000000000000000000000inj --home=$HOME/.injectived/validator1 --chain-id=testing-1
-injectived add-genesis-account $(injectived keys show validator3 -a --keyring-backend=test --home=$HOME/.injectived/validator3) 10000000000000000000000000000000stake,10000000000000000000000000000000inj --home=$HOME/.injectived/validator1 --chain-id=testing-1
-injectived add-genesis-account $(injectived keys show validator1 -a --keyring-backend=test --home=$HOME/.injectived/validator1) 10000000000000000000000000000000stake,10000000000000000000000000000000inj --home=$HOME/.injectived/validator2 --chain-id=testing-1
-injectived add-genesis-account $(injectived keys show validator2 -a --keyring-backend=test --home=$HOME/.injectived/validator2) 10000000000000000000000000000000stake,10000000000000000000000000000000inj --home=$HOME/.injectived/validator2 --chain-id=testing-1
-injectived add-genesis-account $(injectived keys show validator3 -a --keyring-backend=test --home=$HOME/.injectived/validator3) 10000000000000000000000000000000stake,10000000000000000000000000000000inj --home=$HOME/.injectived/validator2 --chain-id=testing-1
-injectived add-genesis-account $(injectived keys show validator1 -a --keyring-backend=test --home=$HOME/.injectived/validator1) 10000000000000000000000000000000stake,10000000000000000000000000000000inj --home=$HOME/.injectived/validator3 --chain-id=testing-1
-injectived add-genesis-account $(injectived keys show validator2 -a --keyring-backend=test --home=$HOME/.injectived/validator2) 10000000000000000000000000000000stake,10000000000000000000000000000000inj --home=$HOME/.injectived/validator3 --chain-id=testing-1
-injectived add-genesis-account $(injectived keys show validator3 -a --keyring-backend=test --home=$HOME/.injectived/validator3) 10000000000000000000000000000000stake,10000000000000000000000000000000inj --home=$HOME/.injectived/validator3 --chain-id=testing-1
-injectived gentx validator1 1000000000000000000000stake --keyring-backend=test --home=$HOME/.injectived/validator1 --chain-id=testing-1
-injectived gentx validator2 1000000000000000000000stake --keyring-backend=test --home=$HOME/.injectived/validator2 --chain-id=testing-1
-injectived gentx validator3 1000000000000000000000stake --keyring-backend=test --home=$HOME/.injectived/validator3 --chain-id=testing-1
+injectived genesis add-genesis-account $(injectived keys show validator1 -a --keyring-backend=test --home=$HOME/.injectived/validator1) 10000000000000000000000000000000stake,10000000000000000000000000000000inj --home=$HOME/.injectived/validator1 --chain-id=testing-1
+injectived genesis add-genesis-account $(injectived keys show validator2 -a --keyring-backend=test --home=$HOME/.injectived/validator2) 10000000000000000000000000000000stake,10000000000000000000000000000000inj --home=$HOME/.injectived/validator1 --chain-id=testing-1
+injectived genesis add-genesis-account $(injectived keys show validator3 -a --keyring-backend=test --home=$HOME/.injectived/validator3) 10000000000000000000000000000000stake,10000000000000000000000000000000inj --home=$HOME/.injectived/validator1 --chain-id=testing-1
+injectived genesis add-genesis-account $(injectived keys show validator1 -a --keyring-backend=test --home=$HOME/.injectived/validator1) 10000000000000000000000000000000stake,10000000000000000000000000000000inj --home=$HOME/.injectived/validator2 --chain-id=testing-1
+injectived genesis add-genesis-account $(injectived keys show validator2 -a --keyring-backend=test --home=$HOME/.injectived/validator2) 10000000000000000000000000000000stake,10000000000000000000000000000000inj --home=$HOME/.injectived/validator2 --chain-id=testing-1
+injectived genesis add-genesis-account $(injectived keys show validator3 -a --keyring-backend=test --home=$HOME/.injectived/validator3) 10000000000000000000000000000000stake,10000000000000000000000000000000inj --home=$HOME/.injectived/validator2 --chain-id=testing-1
+injectived genesis add-genesis-account $(injectived keys show validator1 -a --keyring-backend=test --home=$HOME/.injectived/validator1) 10000000000000000000000000000000stake,10000000000000000000000000000000inj --home=$HOME/.injectived/validator3 --chain-id=testing-1
+injectived genesis add-genesis-account $(injectived keys show validator2 -a --keyring-backend=test --home=$HOME/.injectived/validator2) 10000000000000000000000000000000stake,10000000000000000000000000000000inj --home=$HOME/.injectived/validator3 --chain-id=testing-1
+injectived genesis add-genesis-account $(injectived keys show validator3 -a --keyring-backend=test --home=$HOME/.injectived/validator3) 10000000000000000000000000000000stake,10000000000000000000000000000000inj --home=$HOME/.injectived/validator3 --chain-id=testing-1
+injectived genesis gentx validator1 1000000000000000000000stake --keyring-backend=test --home=$HOME/.injectived/validator1 --chain-id=testing-1
+injectived genesis gentx validator2 1000000000000000000000stake --keyring-backend=test --home=$HOME/.injectived/validator2 --chain-id=testing-1
+injectived genesis gentx validator3 1000000000000000000000stake --keyring-backend=test --home=$HOME/.injectived/validator3 --chain-id=testing-1
 
 cp validator2/config/gentx/*.json $HOME/.injectived/validator1/config/gentx/
 cp validator3/config/gentx/*.json $HOME/.injectived/validator1/config/gentx/
-injectived collect-gentxs --home=$HOME/.injectived/validator1 
+injectived genesis collect-gentxs --home=$HOME/.injectived/validator1 
 
 # cp validator1/config/genesis.json $HOME/.injectived/validator2/config/genesis.json
 # cp validator1/config/genesis.json $HOME/.injectived/validator3/config/genesis.json
