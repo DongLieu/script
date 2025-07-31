@@ -1,4 +1,4 @@
- script git:(master) ✗ realio-networkd q multistaking validators
+➜  ~ realio-networkd q multistaking validators         
 pagination:
   next_key: null
   total: "0"
@@ -9,10 +9,10 @@ validators:
       max_change_rate: "0.010000000000000000"
       max_rate: "0.200000000000000000"
       rate: "0.100000000000000000"
-    update_time: "2025-07-31T06:36:08.361017Z"
+    update_time: "2025-07-31T09:24:49.491923Z"
   consensus_pubkey:
     '@type': /cosmos.crypto.ed25519.PubKey
-    key: Uu1YXy0o58mZvHRYKNcgA0HB1sbVPkyQMdIOy9UCB14=
+    key: S5qTpTpNm0fBOnmSay25aCyJUAclIEi7c7ilE/Swwck=
   delegator_shares: "1000000000000000000000.000000000000000000"
   description:
     details: ""
@@ -33,10 +33,10 @@ validators:
       max_change_rate: "0.010000000000000000"
       max_rate: "0.200000000000000000"
       rate: "0.100000000000000000"
-    update_time: "2025-07-31T06:36:08.361017Z"
+    update_time: "2025-07-31T09:24:49.491923Z"
   consensus_pubkey:
     '@type': /cosmos.crypto.ed25519.PubKey
-    key: Kv6SUOSi/MKBAhLTn2+YmMwLaE5tUHh/yRy/K1668wc=
+    key: tf+uc0Q5HKVGg8o4xr7gyDoaLeIF0qAtf77+VYdlQBA=
   delegator_shares: "1000000000000000000000.000000000000000000"
   description:
     details: ""
@@ -57,10 +57,10 @@ validators:
       max_change_rate: "0.010000000000000000"
       max_rate: "0.200000000000000000"
       rate: "0.100000000000000000"
-    update_time: "2025-07-31T06:36:08.361017Z"
+    update_time: "2025-07-31T09:24:49.491923Z"
   consensus_pubkey:
     '@type': /cosmos.crypto.ed25519.PubKey
-    key: Mk7M2YwK1/WiWMP+V6JhUNwT2SlJlDuhODO3gtjBoSU=
+    key: z1aq3b9MiRjhze+9+G6NzWKKlIBJOjlZj6dJLuGCSN0=
   delegator_shares: "1000000000000000000000.000000000000000000"
   description:
     details: ""
@@ -75,17 +75,17 @@ validators:
   tokens: "1000000000000000000000"
   unbonding_height: "0"
   unbonding_time: "1970-01-01T00:00:00Z"
-- bond_denom: erc20:0x6c129e4502B953595513a6652549840Fa7e23b06
+- bond_denom: erc20:0x2575AC10896108D30290d37928fA3DB314220007
   commission:
     commission_rates:
       max_change_rate: "0.010000000000000000"
       max_rate: "0.200000000000000000"
       rate: "0.100000000000000000"
-    update_time: "2025-07-31T08:09:01.226753Z"
+    update_time: "2025-07-31T09:33:11.991724Z"
   consensus_pubkey:
     '@type': /cosmos.crypto.ed25519.PubKey
-    key: x9RwCR6GOAMfOelx9W22d1xUvcIaMwa+DVyRf/WPMgE=
-  delegator_shares: "200000.000000000000000000"
+    key: jZOyc7dpUaEYVldurpSDJ0NByrW1RshC/wIkILG8GL8=
+  delegator_shares: "1000000000000000000000.000000000000000000"
   description:
     details: validator's (optional) details
     identity: optional identity signature (ex. UPort or Keybase)
@@ -95,10 +95,11 @@ validators:
   jailed: false
   min_self_delegation: "1"
   operator_address: realiovaloper1j7qsamh9t7mynehxz2svfrpqglyeexty2wfh49
-  status: BOND_STATUS_UNBONDED
-  tokens: "200000"
+  status: BOND_STATUS_BONDED
+  tokens: "1000000000000000000000"
   unbonding_height: "0"
   unbonding_time: "1970-01-01T00:00:00Z"
+➜  ~ 
 
 
  script git:(master) ✗ realio-networkd tx multistaking delegate-evm realiovaloper1j7qsamh9t7mynehxz2svfrpqglyeexty2wfh49 0x6c129e4502B953595513a6652549840Fa7e23b06 100000 --from validator1 --keyring-backend test --home ~/.realio-network/validator1 --chain-id realionetwork_3301-1 -y --fees 100ario --gas 4000000
