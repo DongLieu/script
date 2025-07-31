@@ -70,12 +70,13 @@ VALIDATOR3_APP_TOML=$HOME/.realio-network/validator3/config/app.toml
 
 # validator1
 sed -i -E 's|0.0.0.0:9090|0.0.0.0:9050|g' $VALIDATOR1_APP_TOML
+sed -i -E 's|enable = false|enable = true|g' $VALIDATOR1_APP_TOML
 # sed -i -E 's|127.0.0.1:9090|127.0.0.1:9050|g' $VALIDATOR1_APP_TOML
 
 # validator2
 sed -i -E 's|0.0.0.0:1317|0.0.0.0:1316|g' $VALIDATOR2_APP_TOML
 sed -i -E 's|0.0.0.0:9090|0.0.0.0:9088|g' $VALIDATOR2_APP_TOML
-# sed -i -E 's|localhost:9090|localhost:9088|g' $VALIDATOR2_APP_TOML
+sed -i -E 's|enable = false|enable = true|g' $VALIDATOR2_APP_TOML
 sed -i -E 's|0.0.0.0:9091|0.0.0.0:9089|g' $VALIDATOR2_APP_TOML
 # sed -i -E 's|localhost:9091|localhost:9089|g' $VALIDATOR2_APP_TOML
 sed -i -E 's|127.0.0.1:8545|127.0.0.1:8535|g' $VALIDATOR2_APP_TOML
@@ -83,7 +84,7 @@ sed -i -E 's|127.0.0.1:8545|127.0.0.1:8535|g' $VALIDATOR2_APP_TOML
 # validator3
 sed -i -E 's|0.0.0.0:1317|0.0.0.0:1315|g' $VALIDATOR3_APP_TOML
 sed -i -E 's|0.0.0.0:9090|0.0.0.0:9086|g' $VALIDATOR3_APP_TOML
-# sed -i -E 's|localhost:9090|localhost:9086|g' $VALIDATOR3_APP_TOML
+sed -i -E 's|enable = false|enable = true|g' $VALIDATOR3_APP_TOML
 sed -i -E 's|0.0.0.0:9091|0.0.0.0:9087|g' $VALIDATOR3_APP_TOML
 # sed -i -E 's|localhost:9091|localhost:9087|g' $VALIDATOR3_APP_TOML
 sed -i -E 's|127.0.0.1:8545|127.0.0.1:8525|g' $VALIDATOR3_APP_TOML
@@ -119,6 +120,8 @@ sed -i -E 's|prometheus_listen_addr = ":26660"|prometheus_listen_addr = ":26620"
 update_test_genesis '.app_state["gov"]["voting_params"]["voting_period"] = "15s"'
 update_test_genesis '.app_state["gov"]["params"]["voting_period"] = "15s"'
 
+update_test_genesis '.app_state["feemarket"]["params"]["base_fee"] = "0"'
+
 # copy validator1 genesis file to validator2-3
 cp $HOME/.realio-network/validator1/config/genesis.json $HOME/.realio-network/validator2/config/genesis.json
 cp $HOME/.realio-network/validator1/config/genesis.json $HOME/.realio-network/validator3/config/genesis.json
@@ -138,7 +141,42 @@ screen -S realio-networkd2 -t realio-networkd2 -d -m realio-networkd start --hom
 screen -S realio-networkd3 -t realio-networkd3 -d -m realio-networkd start --home=$HOME/.realio-network/validator3
 # realio-networkd start --home=$HOME/.realio-network/validator3
 
-# sleep 7
+sleep 7
 # realio-networkd tx gov submit-legacy-proposal /Users/donglieu/script/realio/upgrade/upgrade.json
 # realio-networkd tx bank send $(realio-networkd keys show validator1 -a --keyring-backend=test --home=$HOME/.realio-network/validator1) $(realio-networkd keys show validator2 -a --keyring-backend=test --home=$HOME/.realio-network/validator2) 100000stake --keyring-backend=test  --chain-id realionetwork_3301-1 -y --home=$HOME/.realio-network/validator1 --fees 10stake
 
+realio-networkd tx gov submit-proposal /Users/donglieu/script/realio/upgrade/gov1.json --from validator1 --fees 1000000ario --gas 2263340  --keyring-backend=test --home=$HOME/.realio-network/validator1 -y
+
+sleep 7
+
+realio-networkd tx gov vote 1 yes  --from validator1 --keyring-backend test --home ~/.realio-network/validator1 --chain-id realionetwork_3301-1 -y --fees 13000ario
+realio-networkd tx gov vote 1 yes  --from validator2 --keyring-backend test --home ~/.realio-network/validator2 --chain-id realionetwork_3301-1 -y --fees 3000ario
+realio-networkd tx gov vote 1 yes  --from validator3 --keyring-backend test --home ~/.realio-network/validator3 --chain-id realionetwork_3301-1 -y --fees 13000ario
+
+sleep 7 
+
+realio-networkd tx bank send realio1jyrr9ga485mzdw6u7w7vcvcmhz8h6zq8w4vxzu realio1j7qsamh9t7mynehxz2svfrpqglyeexty762dyr 89999999999999909995ario  --from validator1 --keyring-backend test --home ~/.realio-network/validator1 --chain-id realionetwork_3301-1 -y --fees 100ario
+
+
+# wating deploy contract
+
+# sleep 7
+
+# realio-networkd tx gov submit-proposal /Users/donglieu/script/realio/upgrade/gov2.json --from validator1 --fees 1000000ario --gas 2263340  --keyring-backend=test --home=$HOME/.realio-network/validator1 -y
+
+# sleep 7
+
+# realio-networkd tx gov vote 2 yes  --from validator1 --keyring-backend test --home ~/.realio-network/validator1 --chain-id realionetwork_3301-1 -y --fees 13000ario
+# realio-networkd tx gov vote 2 yes  --from validator2 --keyring-backend test --home ~/.realio-network/validator2 --chain-id realionetwork_3301-1 -y --fees 913000ario
+# realio-networkd tx gov vote 2 yes  --from validator3 --keyring-backend test --home ~/.realio-network/validator3 --chain-id realionetwork_3301-1 -y --fees 73000ario
+
+# sleep 7
+
+# sleep 7
+# realio-networkd tx multistaking create-evm-validator /Users/donglieu/script/realio/upgrade/validator.json --from validator4 --keyring-backend test --home ~/.realio-network/validator4 --chain-id realionetwork_3301-1 -y --fees 100ario --gas 4000000
+
+# sleep 7
+# realio-networkd q distribution rewards-by-validator realio1j7qsamh9t7mynehxz2svfrpqglyeexty762dyr realiovaloper1j7qsamh9t7mynehxz2svfrpqglyeexty2wfh49
+
+# sleep 7
+# realio-networkd q multistaking multistaking-locks 
