@@ -142,20 +142,31 @@ screen -S realio-networkd3 -t realio-networkd3 -d -m realio-networkd start --hom
 # realio-networkd start --home=$HOME/.realio-network/validator3
 
 sleep 7
+
+# realio-networkd tx gov submit-legacy-proposal software-upgrade v1.4.0 --title="Test Proposal"  --description="testing" --type="Text" --deposit="1000000000000ario"  --from validator1  --keyring-backend=test --chain-id realionetwork_3301-1 --fees 13000ario --home ~/.realio-network/validator1 -y
+
+# realio-networkd tx gov submit-proposal /Users/donglieu/script/realio/upgrade/upgrade.json  --from validator1 --keyring-backend test --home ~/.realio-network/validator1 --chain-id realionetwork_3301-1 -y --fees 13000ario
+# sleep 7
+
+# realio-networkd tx gov vote 1 yes  --from validator1 --keyring-backend test --home ~/.realio-network/validator1 --chain-id realionetwork_3301-1 -y --fees 13000ario
+# realio-networkd tx gov vote 1 yes  --from validator2 --keyring-backend test --home ~/.realio-network/validator2 --chain-id realionetwork_3301-1 -y --fees 3000ario
+# realio-networkd tx gov vote 1 yes  --from validator3 --keyring-backend test --home ~/.realio-network/validator3 --chain-id realionetwork_3301-1 -y --fees 13000ario
+
+
 # realio-networkd tx gov submit-legacy-proposal /Users/donglieu/script/realio/upgrade/upgrade.json
 # realio-networkd tx bank send $(realio-networkd keys show validator1 -a --keyring-backend=test --home=$HOME/.realio-network/validator1) $(realio-networkd keys show validator2 -a --keyring-backend=test --home=$HOME/.realio-network/validator2) 100000stake --keyring-backend=test  --chain-id realionetwork_3301-1 -y --home=$HOME/.realio-network/validator1 --fees 10stake
 
-realio-networkd tx gov submit-proposal /Users/donglieu/script/realio/upgrade/gov1.json --from validator1 --fees 1000000ario --gas 2263340  --keyring-backend=test --home=$HOME/.realio-network/validator1 -y
+# realio-networkd tx gov submit-proposal /Users/donglieu/script/realio/upgrade/gov1.json --from validator1 --fees 1000000ario --gas 2263340  --keyring-backend=test --home=$HOME/.realio-network/validator1 -y
 
-sleep 7
+# sleep 7
 
-realio-networkd tx gov vote 1 yes  --from validator1 --keyring-backend test --home ~/.realio-network/validator1 --chain-id realionetwork_3301-1 -y --fees 13000ario
-realio-networkd tx gov vote 1 yes  --from validator2 --keyring-backend test --home ~/.realio-network/validator2 --chain-id realionetwork_3301-1 -y --fees 3000ario
-realio-networkd tx gov vote 1 yes  --from validator3 --keyring-backend test --home ~/.realio-network/validator3 --chain-id realionetwork_3301-1 -y --fees 13000ario
+# realio-networkd tx gov vote 2 yes  --from validator1 --keyring-backend test --home ~/.realio-network/validator1 --chain-id realionetwork_3301-1 -y --fees 13000ario
+# realio-networkd tx gov vote 2 yes  --from validator2 --keyring-backend test --home ~/.realio-network/validator2 --chain-id realionetwork_3301-1 -y --fees 3000ario
+# realio-networkd tx gov vote 2 yes  --from validator3 --keyring-backend test --home ~/.realio-network/validator3 --chain-id realionetwork_3301-1 -y --fees 13000ario
 
-sleep 7 
+# sleep 7 
 
-realio-networkd tx bank send realio1jyrr9ga485mzdw6u7w7vcvcmhz8h6zq8w4vxzu realio1j7qsamh9t7mynehxz2svfrpqglyeexty762dyr 89999999999999909995ario  --from validator1 --keyring-backend test --home ~/.realio-network/validator1 --chain-id realionetwork_3301-1 -y --fees 100ario
+# realio-networkd tx bank send realio1jyrr9ga485mzdw6u7w7vcvcmhz8h6zq8w4vxzu realio1j7qsamh9t7mynehxz2svfrpqglyeexty762dyr 89999999999999909995ario  --from validator1 --keyring-backend test --home ~/.realio-network/validator1 --chain-id realionetwork_3301-1 -y --fees 100ario
 
 
 # wating deploy contract
@@ -166,9 +177,9 @@ realio-networkd tx bank send realio1jyrr9ga485mzdw6u7w7vcvcmhz8h6zq8w4vxzu reali
 
 # sleep 7
 
-# realio-networkd tx gov vote 2 yes  --from validator1 --keyring-backend test --home ~/.realio-network/validator1 --chain-id realionetwork_3301-1 -y --fees 13000ario
-# realio-networkd tx gov vote 2 yes  --from validator2 --keyring-backend test --home ~/.realio-network/validator2 --chain-id realionetwork_3301-1 -y --fees 913000ario
-# realio-networkd tx gov vote 2 yes  --from validator3 --keyring-backend test --home ~/.realio-network/validator3 --chain-id realionetwork_3301-1 -y --fees 73000ario
+# realio-networkd tx gov vote 3 yes  --from validator1 --keyring-backend test --home ~/.realio-network/validator1 --chain-id realionetwork_3301-1 -y --fees 13000ario
+# realio-networkd tx gov vote 3 yes  --from validator2 --keyring-backend test --home ~/.realio-network/validator2 --chain-id realionetwork_3301-1 -y --fees 913000ario
+# realio-networkd tx gov vote 3 yes  --from validator3 --keyring-backend test --home ~/.realio-network/validator3 --chain-id realionetwork_3301-1 -y --fees 73000ario
 
 # sleep 7
 

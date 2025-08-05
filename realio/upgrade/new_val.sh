@@ -22,6 +22,7 @@ sed -i -E 's|enable = false|enable = true|g' $VALIDATOR4_APP_TOML
 sed -i -E 's|localhost:9091|localhost:9083|g' $VALIDATOR4_APP_TOML
 sed -i -E 's|tcp://0.0.0.0:10337|tcp://0.0.0.0:10377|g' $VALIDATOR4_APP_TOML
 sed -i -E 's|127.0.0.1:8545|127.0.0.1:8515|g' $VALIDATOR4_APP_TOML
+sed -i -E 's|127.0.0.1:8546|127.0.0.1:8514|g' $VALIDATOR4_APP_TOML
 
 
 VALIDATOR4_CONFIG=$HOME/.realio-network/validator4/config/config.toml

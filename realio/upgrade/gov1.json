@@ -42,7 +42,10 @@
       "access_control_list": []
      }
     },
-    "active_static_precompiles": []
+    "active_static_precompiles": [
+        "0x0000000000000000000000000000000000000801",
+        "0x0000000000000000000000000000000000000900"
+    ]
    }
   }
  ],
