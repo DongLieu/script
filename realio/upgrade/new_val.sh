@@ -2,6 +2,13 @@
 
 set -e
 
+git clone https://github.com/realiotech/realio-network
+cd realio-network
+git checkout v1.3.1
+go install ./...
+cd ..
+rm -rf realio-network
+
 rm -rf ~/.realio-network/validator4
 
 # node 4
@@ -46,7 +53,17 @@ sed -i -E "s|persistent_peers = \"\"|persistent_peers = \"$node1@localhost:26656
 
 # realio-networkd keys show validator4 -a --keyring-backend=test --home=$HOME/.realio-network/validator4
 
-# screen -S osmo4 -t osmo4 -d -m 
+screen -S osmo4 -t osmo4 -d -m realio-networkd start --home=$HOME/.realio-network/validator4
+
+sleep 7
+git clone https://github.com/realiotech/realio-network
+cd realio-network
+git checkout hieu/multistaking-evm
+go install ./...
+cd ..
+rm -rf realio-network
+
+
 realio-networkd start --home=$HOME/.realio-network/validator4
 
 # sleep 7
