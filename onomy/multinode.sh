@@ -9,6 +9,7 @@ mkdir $HOME/.onomyd
 mkdir $HOME/.onomyd/validator1
 mkdir $HOME/.onomyd/validator2
 mkdir $HOME/.onomyd/validator3
+mkdir $HOME/.onomyd/validator4
 
 # init all three validators
 onomyd init --chain-id=testing-1 validator1 --home=$HOME/.onomyd/validator1
@@ -50,14 +51,14 @@ VALIDATOR2_APP_TOML=$HOME/.onomyd/validator2/config/app.toml
 VALIDATOR3_APP_TOML=$HOME/.onomyd/validator3/config/app.toml
 
 # validator1
-sed -i -E 's|0.0.0.0:9090|0.0.0.0:9050|g' $VALIDATOR1_APP_TOML
-sed -i -E 's|127.0.0.1:9090|127.0.0.1:9050|g' $VALIDATOR1_APP_TOML
+# sed -i -E 's|localhost:9090|localhost:9050|g' $VALIDATOR1_APP_TOML
+sed -i -E 's|localhost:9090|localhost:9050|g' $VALIDATOR1_APP_TOML
 sed -i -E 's|minimum-gas-prices = ""|minimum-gas-prices = "0.0001stake"|g' $VALIDATOR1_APP_TOML
 
 # validator2
 sed -i -E 's|tcp://0.0.0.0:1317|tcp://0.0.0.0:1316|g' $VALIDATOR2_APP_TOML
-sed -i -E 's|0.0.0.0:9090|0.0.0.0:9088|g' $VALIDATOR2_APP_TOML
-sed -i -E 's|0.0.0.0:9091|0.0.0.0:9089|g' $VALIDATOR2_APP_TOML
+sed -i -E 's|localhost:9090|localhost:9088|g' $VALIDATOR2_APP_TOML
+sed -i -E 's|localhost:9091|localhost:9089|g' $VALIDATOR2_APP_TOML
 sed -i -E 's|minimum-gas-prices = ""|minimum-gas-prices = "0.0001stake"|g' $VALIDATOR2_APP_TOML
 
 # validator3
@@ -102,6 +103,7 @@ update_test_genesis () {
 
 update_test_genesis '.app_state["gov"]["voting_params"]["voting_period"] = "15s"'
 update_test_genesis '.app_state["gov"]["params"]["voting_period"] = "15s"'
+# update_test_genesis '.consensus["abci"]["vote_extensions_enable_height"] = "99999999999"'
 
 cp $HOME/.onomyd/validator1/config/genesis.json $HOME/.onomyd/validator2/config/genesis.json
 cp $HOME/.onomyd/validator1/config/genesis.json $HOME/.onomyd/validator3/config/genesis.json
@@ -110,37 +112,46 @@ cp $HOME/.onomyd/validator1/config/genesis.json $HOME/.onomyd/validator3/config/
 node1=$(onomyd tendermint show-node-id --home=$HOME/.onomyd/validator1)
 node2=$(onomyd tendermint show-node-id --home=$HOME/.onomyd/validator2)
 node3=$(onomyd tendermint show-node-id --home=$HOME/.onomyd/validator3)
-sed -i -E "s|persistent_peers = \"\"|persistent_peers = \"$node1@localhost:26656,$node2@localhost:26656,$node3@localhost:26656\"|g" $HOME/.onomyd/validator1/config/config.toml
-sed -i -E "s|persistent_peers = \"\"|persistent_peers = \"$node1@localhost:26656,$node2@localhost:26656,$node3@localhost:26656\"|g" $HOME/.onomyd/validator2/config/config.toml
-sed -i -E "s|persistent_peers = \"\"|persistent_peers = \"$node1@localhost:26656,$node2@localhost:26656,$node3@localhost:26656\"|g" $HOME/.onomyd/validator3/config/config.toml
+peers="$node1@localhost:26656,$node2@localhost:26653,$node3@localhost:26650"
+# sed -i -E "s|persistent_peers = \"\"|persistent_peers = \"$node1@localhost:26656,$node2@localhost:26653,$node3@localhost:26650\"|g" $HOME/.onomyd/validator1/config/config.toml
+sed -i.bak "s/^persistent_peers *=.*/persistent_peers = \"$peers\"/" "$VALIDATOR1_CONFIG"
+
+# sed -i -E "s|persistent_peers = \"\"|persistent_peers = \"$node1@localhost:26656,$node2@localhost:26653,$node3@localhost:26650\"|g" $HOME/.onomyd/validator2/config/config.toml
+sed -i.bak "s/^persistent_peers *=.*/persistent_peers = \"$peers\"/" "$VALIDATOR2_CONFIG"
+
+# sed -i -E "s|persistent_peers = \"\"|persistent_peers = \"$node1@localhost:26656,$node2@localhost:26653,$node3@localhost:26650\"|g" $HOME/.onomyd/validator3/config/config.toml
+sed -i.bak "s/^persistent_peers *=.*/persistent_peers = \"$peers\"/" "$VALIDATOR3_CONFIG"
 
 
 # # start all three validators/
 # onomyd start --home=$HOME/.onomyd/validator1
 screen -S onomy1 -t onomy1 -d -m onomyd start --home=$HOME/.onomyd/validator1
 screen -S onomy2 -t onomy2 -d -m onomyd start --home=$HOME/.onomyd/validator2
-screen -S onomy3 -t onomy3 -d -m onomyd start --home=$HOME/.onomyd/validator3
+# screen -S onomy3 -t onomy3 -d -m 
+onomyd start --home=$HOME/.onomyd/validator3
 # onomyd start --home=$HOME/.onomyd/validator3
 
-sleep 7
+# sleep 7
 
-# onomyd tx bank send onomy1wa3u4knw74r598quvzydvca42qsmk6jrc6uj7m onomy1w7f3xx7e75p4l7qdym5msqem9rd4dyc4y47xsd 100000stake --keyring-backend=test --chain-id=testing-1 -y --home=$HOME/.onomyd/validator1 --fees 10stake
+# onomyd tx bank send onomy1wa3u4knw74r598quvzydvca42qsmk6jrc6uj7m onomy1qvuhm5m644660nd8377d6l7yz9e9hhm9rd0sqr 999999999000000000000000000000stake,1000000000anom --keyring-backend=test --chain-id=testing-1 -y --home=$HOME/.onomyd/validator1 --fees 20stake
+# sleep 7
+# onomyd tx bank send onomy1wa3u4knw74r598quvzydvca42qsmk6jrc6uj7m onomy16gjg8p5fedy48wf403jwmz2cxlwqtkqlk3ptmx 999999999000000000000000000000stake,1000000000anom --keyring-backend=test --chain-id=testing-1 -y --home=$HOME/.onomyd/validator1 --fees 20stake
+# sleep 7
+# onomyd q staking validators
+# onomyd keys list --keyring-backend=test --home=$HOME/.onomyd/validator1
+# onomyd keys list --keyring-backend=test --home=$HOME/.onomyd/validator2
+# onomyd keys list --keyring-backend=test --home=$HOME/.onomyd/validator3
 
-onomyd q staking validators
-onomyd keys list --keyring-backend=test --home=$HOME/.onomyd/validator1
-onomyd keys list --keyring-backend=test --home=$HOME/.onomyd/validator2
-onomyd keys list --keyring-backend=test --home=$HOME/.onomyd/validator3
-
-sleep 7
+# sleep 7
 # killall onomyd || true
 # onomyd in-place-testnet testing-1  onomyvaloper1wa3u4knw74r598quvzydvca42qsmk6jrya79zd --accounts-to-fund="onomy1wa3u4knw74r598quvzydvca42qsmk6jrc6uj7m,onomy1w7f3xx7e75p4l7qdym5msqem9rd4dyc4y47xsd,onomy1g9v3zjt6rfkwm4s8sw9wu4jgz9me8pn2ygn94a" --home=$HOME/.onomyd/validator1 --skip-confirmation
 
-onomyd tx gov submit-proposal  /Users/donglieu/script/onomy/du-upgarde.json --keyring-backend=test  --home=$HOME/.onomyd/validator1 --from onomy1wa3u4knw74r598quvzydvca42qsmk6jrc6uj7m -y --chain-id testing-1 --fees 20stake
+# onomyd tx gov submit-proposal  /Users/donglieu/script/onomy/du-upgarde.json --keyring-backend=test  --home=$HOME/.onomyd/validator1 --from onomy1wa3u4knw74r598quvzydvca42qsmk6jrc6uj7m -y --chain-id testing-1 --fees 20stake
 
-sleep 7
-onomyd tx gov vote 1 yes  --from validator1 --keyring-backend test --home ~/.onomyd/validator1 --chain-id testing-1 -y --fees 20stake
-onomyd tx gov vote 1 yes  --from validator2 --keyring-backend test --home ~/.onomyd/validator2 --chain-id testing-1 -y --fees 20stake
-onomyd tx gov vote 1 yes  --from validator3 --keyring-backend test --home ~/.onomyd/validator3 --chain-id testing-1 -y --fees 20stake
+# sleep 7
+# onomyd tx gov vote 1 yes  --from validator1 --keyring-backend test --home ~/.onomyd/validator1 --chain-id testing-1 -y --fees 20stake
+# onomyd tx gov vote 1 yes  --from validator2 --keyring-backend test --home ~/.onomyd/validator2 --chain-id testing-1 -y --fees 20stake
+# onomyd tx gov vote 1 yes  --from validator3 --keyring-backend test --home ~/.onomyd/validator3 --chain-id testing-1 -y --fees 20stake
 
 # sleep 15
 # echo "==================="
