@@ -168,7 +168,7 @@ screen -S onomy3 -t onomy3 -d -m onomyd start --home=$HOME/.onomyd/validator3
 screen -S onomy3 -t onomy3 -d -m onomyd start --home=$HOME/.onomyd/validator4
 # onomyd start --home=$HOME/.onomyd/validator3
 
-# sleep 7
+sleep 7
 
 onomyd tx bank send onomy1wa3u4knw74r598quvzydvca42qsmk6jrc6uj7m onomy1qvuhm5m644660nd8377d6l7yz9e9hhm9rd0sqr 999999999000000000000000000000stake,1000000000anom --keyring-backend=test --chain-id=testing-1 -y --home=$HOME/.onomyd/validator1 --fees 20stake
 sleep 7

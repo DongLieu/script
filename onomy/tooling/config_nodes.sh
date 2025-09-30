@@ -1,19 +1,5 @@
 #!/bin/bash
-NUMVAL=$1
-PUBKEYS=$2
-
-rm -rf $HOME/.onomyd-tooling/
-mkdir $HOME/.onomyd-tooling
-mkdir $HOME/.onomyd-tooling/validator1
-mkdir $HOME/.onomyd-tooling/validator2
-mkdir $HOME/.onomyd-tooling/validator3
-mkdir $HOME/.onomyd-tooling/validator4
-# ...
-onomyd init --chain-id=testing-1 validator1 --home=$HOME/.onomyd-tooling/validator1
-onomyd init --chain-id=testing-1 validator2 --home=$HOME/.onomyd-tooling/validator2
-onomyd init --chain-id=testing-1 validator3 --home=$HOME/.onomyd-tooling/validator3
-onomyd init --chain-id=testing-1 validator4 --home=$HOME/.onomyd-tooling/validator4
-
+# NUMVAL=$1
 # pubkey 
 
 
@@ -89,3 +75,7 @@ node2=$(onomyd tendermint show-node-id --home=$HOME/.onomyd-tooling/validator2)
 node3=$(onomyd tendermint show-node-id --home=$HOME/.onomyd-tooling/validator3)
 node4=$(onomyd tendermint show-node-id --home=$HOME/.onomyd-tooling/validator4)
 peers="$node1@localhost:26656,$node2@localhost:26653,$node3@localhost:26650,$node4@localhost:26647"
+sed -i.bak "s/^persistent_peers *=.*/persistent_peers = \"$peers\"/" "$VALIDATOR1_CONFIG"
+sed -i.bak "s/^persistent_peers *=.*/persistent_peers = \"$peers\"/" "$VALIDATOR2_CONFIG"
+sed -i.bak "s/^persistent_peers *=.*/persistent_peers = \"$peers\"/" "$VALIDATOR3_CONFIG"
+sed -i.bak "s/^persistent_peers *=.*/persistent_peers = \"$peers\"/" "$VALIDATOR4_CONFIG"

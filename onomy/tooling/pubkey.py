@@ -25,26 +25,40 @@ def get_validators_info(file_path: str, home_tooling: str):
     return count, pubkeys
 
 def editpubkey(file_path: str, new_pub_key: str):
-    if not os.path.exists(file_path):
-        # print(f"Error: file '{file_path}' not found")
-        sys.exit(1)
+    # Đảm bảo thư mục tồn tại
+    os.makedirs(os.path.dirname(file_path), exist_ok=True)
 
-    # Đọc file JSON
-    with open(file_path, "r") as f:
-        data = json.load(f)
+    if os.path.exists(file_path):
+        # Đọc file JSON
+        with open(file_path, "r") as f:
+            data = json.load(f)
 
-    # Thay thế giá trị pub_key.value
-    if "pub_key" in data and "value" in data["pub_key"]:
-        old_key = data["pub_key"]["value"]
-        data["pub_key"]["value"] = new_pub_key
-        # print(f"Replaced pub_key:\n  old: {old_key}\n  new: {new_pub_key}")
+        # Thay thế giá trị pub_key.value
+        if "pub_key" in data and "value" in data["pub_key"]:
+            old_key = data["pub_key"]["value"]
+            data["pub_key"]["value"] = new_pub_key
+            # print(f"Updated pub_key:\n  old: {old_key}\n  new: {new_pub_key}")
+        else:
+            # print("Error: invalid priv_validator_key.json format")
+            sys.exit(1)
     else:
-        # print("Error: invalid priv_validator_key.json format")
-        sys.exit(1)
+        # Nếu file chưa có, tạo mới theo mẫu
+        data = {
+            "pub_key": {
+                "type": "tendermint/PubKeyEd25519",
+                "value": new_pub_key
+            },
+            "priv_key": {
+                "type": "tendermint/PrivKeyEd25519",
+                "value": new_pub_key
+            }
+        }
+        # print(f"Created new priv_validator_key.json with pub_key={new_pub_key}")
 
     # Ghi lại file
     with open(file_path, "w") as f:
         json.dump(data, f, indent=2)
+
 
 if __name__ == "__main__":
     if len(sys.argv) != 3:

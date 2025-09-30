@@ -11,6 +11,8 @@ mkdir $HOME/.onomyd/validator2
 mkdir $HOME/.onomyd/validator3
 mkdir $HOME/.onomyd/validator4
 
+go install /Users/donglieu/925/onomy/...
+
 # init all three validators
 onomyd init --chain-id=testing-1 validator1 --home=$HOME/.onomyd/validator1
 onomyd init --chain-id=testing-1 validator2 --home=$HOME/.onomyd/validator2
@@ -80,14 +82,14 @@ sed -i -E 's|minimum-gas-prices = ""|minimum-gas-prices = "0.0001stake"|g' $VALI
 
 # validator3
 sed -i -E 's|tcp://0.0.0.0:1317|tcp://0.0.0.0:1315|g' $VALIDATOR3_APP_TOML
-sed -i -E 's|0.0.0.0:9090|0.0.0.0:9086|g' $VALIDATOR3_APP_TOML
-sed -i -E 's|0.0.0.0:9091|0.0.0.0:9087|g' $VALIDATOR3_APP_TOML
+sed -i -E 's|localhost:9090|localhost:9086|g' $VALIDATOR3_APP_TOML
+sed -i -E 's|localhost:9091|localhost:9087|g' $VALIDATOR3_APP_TOML
 sed -i -E 's|minimum-gas-prices = ""|minimum-gas-prices = "0.0001stake"|g' $VALIDATOR3_APP_TOML
 
 # validator4
 sed -i -E 's|tcp://0.0.0.0:1317|tcp://0.0.0.0:1314|g' $VALIDATOR4_APP_TOML
-sed -i -E 's|0.0.0.0:9090|0.0.0.0:9084|g' $VALIDATOR4_APP_TOML
-sed -i -E 's|0.0.0.0:9091|0.0.0.0:9085|g' $VALIDATOR4_APP_TOML
+sed -i -E 's|localhost:9090|localhost:9084|g' $VALIDATOR4_APP_TOML
+sed -i -E 's|localhost:9091|localhost:9085|g' $VALIDATOR4_APP_TOML
 sed -i -E 's|minimum-gas-prices = ""|minimum-gas-prices = "0.0001stake"|g' $VALIDATOR4_APP_TOML
 
 
