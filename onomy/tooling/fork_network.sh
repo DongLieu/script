@@ -45,6 +45,4 @@ cp /Users/donglieu/script/onomy/tooling/tmGenesis.json $HOME/.onomyd-tooling/val
 # config
 /Users/donglieu/script/onomy/tooling/config_nodes.sh
 
-# /Users/donglieu/925/onomy/
-
 /Users/donglieu/script/onomy/tooling/start_nodes.sh

@@ -50,19 +50,17 @@ VALIDATOR2_APP_TOML=$HOME/.injectived/validator2/config/app.toml
 VALIDATOR3_APP_TOML=$HOME/.injectived/validator3/config/app.toml
 
 # validator1
-sed -i -E 's|0.0.0.0:9090|0.0.0.0:9050|g' $VALIDATOR1_APP_TOML
+sed -i -E 's|0.0.0.0:9900|0.0.0.0:9050|g' $VALIDATOR1_APP_TOML
 
 # validator2
 sed -i -E 's|tcp://localhost:1317|tcp://localhost:1316|g' $VALIDATOR2_APP_TOML
-sed -i -E 's|0.0.0.0:9090|0.0.0.0:9088|g' $VALIDATOR2_APP_TOML
-# sed -i -E 's|localhost:9090|localhost:9088|g' $VALIDATOR2_APP_TOML
+sed -i -E 's|0.0.0.0:9900|0.0.0.0:9088|g' $VALIDATOR2_APP_TOML
 sed -i -E 's|0.0.0.0:9091|0.0.0.0:9089|g' $VALIDATOR2_APP_TOML
-# sed -i -E 's|localhost:9091|localhost:9089|g' $VALIDATOR2_APP_TOML
 sed -i -E 's|tcp://0.0.0.0:10337|tcp://0.0.0.0:10347|g' $VALIDATOR2_APP_TOML
 
 # validator3
 sed -i -E 's|tcp://localhost:1317|tcp://localhost:1315|g' $VALIDATOR3_APP_TOML
-sed -i -E 's|0.0.0.0:9090|0.0.0.0:9086|g' $VALIDATOR3_APP_TOML
+sed -i -E 's|0.0.0.0:9900|0.0.0.0:9086|g' $VALIDATOR3_APP_TOML
 # sed -i -E 's|localhost:9090|localhost:9086|g' $VALIDATOR3_APP_TOML
 sed -i -E 's|0.0.0.0:9091|0.0.0.0:9087|g' $VALIDATOR3_APP_TOML
 # sed -i -E 's|localhost:9091|localhost:9087|g' $VALIDATOR3_APP_TOML
