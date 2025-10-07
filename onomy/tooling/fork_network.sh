@@ -13,7 +13,7 @@ onomyd q comet-validator-set --output json > publickeys.json
 # pause and start new binary
 killall onomyd || true
 onomyd export --home=$HOME/.onomyd/validator1 > tmGenesis.json
-cd /Users/donglieu/925/onomy/
+cd /Users/donglieu/1025/1/onomy/
 go install ./...
 cd /Users/donglieu/script/onomy/tooling
 # go install /Users/donglieu/925/onomy/...
