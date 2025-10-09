@@ -7,8 +7,6 @@ mkdir $HOME/.onomyd-tooling2
 # ...
 onomyd init --chain-id=testing-1 validator1 --home=$HOME/.onomyd-tooling2
 
-NUMVAL=$(python3 /Users/donglieu/script/onomy/tooling/phase2/pubkey.py /Users/donglieu/script/onomy/tooling/phase2/publickeys.json /Users/donglieu/.onomyd-tooling2)
-
 # copy data
 cp -r /Users/donglieu/.onomyd/validator1/data /Users/donglieu/.onomyd-tooling2
 
