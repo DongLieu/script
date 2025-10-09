@@ -4,7 +4,7 @@
 cd /Users/donglieu/1025/onomy/
 go install ./...
 cd /Users/donglieu/script/onomy/tooling
-/Users/donglieu/script/onomy/tooling/multinode.sh
+/Users/donglieu/script/onomy/tooling/phase1/multinode.sh
 
 sleep 60
 ## get public key to publickeys.json
@@ -30,7 +30,7 @@ onomyd init --chain-id=testing-1 validator2 --home=$HOME/.onomyd-tooling/validat
 onomyd init --chain-id=testing-1 validator3 --home=$HOME/.onomyd-tooling/validator3
 onomyd init --chain-id=testing-1 validator4 --home=$HOME/.onomyd-tooling/validator4
 
-NUMVAL=$(python3 /Users/donglieu/script/onomy/tooling/pubkey.py /Users/donglieu/script/onomy/tooling/publickeys.json /Users/donglieu/.onomyd-tooling)
+NUMVAL=$(python3 /Users/donglieu/script/onomy/tooling/phase1/pubkey.py /Users/donglieu/script/onomy/tooling/phase1/publickeys.json /Users/donglieu/.onomyd-tooling)
 
 # copy data
 cp -r /Users/donglieu/.onomyd/validator1/data /Users/donglieu/.onomyd-tooling/validator1/
@@ -38,13 +38,13 @@ cp -r /Users/donglieu/.onomyd/validator1/data /Users/donglieu/.onomyd-tooling/va
 cp -r /Users/donglieu/.onomyd/validator1/data /Users/donglieu/.onomyd-tooling/validator3/
 cp -r /Users/donglieu/.onomyd/validator1/data /Users/donglieu/.onomyd-tooling/validator4/
 
-cp /Users/donglieu/script/onomy/tooling/tmGenesis.json $HOME/.onomyd-tooling/validator1/config/genesis.json
-cp /Users/donglieu/script/onomy/tooling/tmGenesis.json $HOME/.onomyd-tooling/validator2/config/genesis.json
-cp /Users/donglieu/script/onomy/tooling/tmGenesis.json $HOME/.onomyd-tooling/validator3/config/genesis.json
-cp /Users/donglieu/script/onomy/tooling/tmGenesis.json $HOME/.onomyd-tooling/validator4/config/genesis.json
+cp /Users/donglieu/script/onomy/tooling/phase1/tmGenesis.json $HOME/.onomyd-tooling/validator1/config/genesis.json
+cp /Users/donglieu/script/onomy/tooling/phase1/tmGenesis.json $HOME/.onomyd-tooling/validator2/config/genesis.json
+cp /Users/donglieu/script/onomy/tooling/phase1/tmGenesis.json $HOME/.onomyd-tooling/validator3/config/genesis.json
+cp /Users/donglieu/script/onomy/tooling/phase1/tmGenesis.json $HOME/.onomyd-tooling/validator4/config/genesis.json
 # config
-/Users/donglieu/script/onomy/tooling/config_nodes.sh
+/Users/donglieu/script/onomy/tooling/phase1/config_nodes.sh
 
-/Users/donglieu/script/onomy/tooling/start_nodes.sh
+/Users/donglieu/script/onomy/tooling/phase1/start_nodes.sh
 
 # snapshot
