@@ -17,6 +17,7 @@ start multinode by binary mainnet:
 # Stop and config testnet(mainet fork)
 
 `HOME_MAINNET` is home of node mainnet
+
 `HOME_FORK` is home of node testnet(mainet fork)
 
 - stop node:
@@ -24,7 +25,7 @@ start multinode by binary mainnet:
 killall onomyd || true
 ```
 
-- build this binary:
+- build this new binary:
 ```
     git clone https://github.com/decentrio/onomy
     cd onomy
