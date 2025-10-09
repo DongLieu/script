@@ -29,7 +29,7 @@ killall onomyd || true
 ```
     git clone https://github.com/decentrio/onomy
     cd onomy
-    git checkout 488cd3b1df14cf1f9df266e2b28d282d3c1c5e29
+    git checkout a5d0f01d4c58845e9d2134d5a52f783d76217ff6
     go install ./...
 ```
 
