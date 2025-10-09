@@ -36,7 +36,4 @@ VALIDATORp2_CONFIG=$HOME/.onomyd-tooling2/config/config.toml
 sed -i -E 's|skip_timeout_commit = false|skip_timeout_commit = true|g' $VALIDATORp2_CONFIG
 # sed -i -E 's|indexer = "kv"|indexer = "null"|g' $VALIDATORp2_CONFIG
 
-
 onomyd start --home=$HOME/.onomyd-tooling2 --log_level debug
-/
-# snapshot
