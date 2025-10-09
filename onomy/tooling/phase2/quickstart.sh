@@ -1,18 +1,3 @@
-#!/bin/bash
-
-# 4 node start old binary, (start mainnet)
-cd /Users/donglieu/1025/onomy/
-go install ./...
-cd /Users/donglieu/script/onomy/tooling/phase2
-/Users/donglieu/script/onomy/tooling/multinode.sh
-
-sleep 60
-## get public key to publickeys.json
-onomyd q comet-validator-set --output json > publickeys.json
-
-# pause and start new binary
-killall onomyd || true
-onomyd export --home=$HOME/.onomyd/validator1 > tmGenesis.json
 cd /Users/donglieu/925/onomy/
 go install ./...
 cd /Users/donglieu/script/onomy/tooling/phase2
@@ -37,6 +22,4 @@ sed -i -E 's|skip_timeout_commit = false|skip_timeout_commit = true|g' $VALIDATO
 # sed -i -E 's|indexer = "kv"|indexer = "null"|g' $VALIDATORp2_CONFIG
 
 
-onomyd start --home=$HOME/.onomyd-tooling2 --log_level debug
-/
-# snapshot
+onomyd start --home=$HOME/.onomyd-tooling2  --log_level debug
