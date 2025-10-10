@@ -1,3 +1,0 @@
-curl -X POST http://localhost:1317/cosmos/tx/v1beta1/txs \
-  -H "Content-Type: application/json" \
-  --data-raw '{"tx_bytes":"Cr0BCroBChwvY29zbW9zLmJhbmsudjFiZXRhMS5Nc2dTZW5kEpkBCixvbm9teTF3YTN1NGtudzc0cjU5OHF1dnp5ZHZjYTQycXNtazZqcmM2dWo3bRIsb25vbXkxcXZ1aG01bTY0NDY2MG5kODM3N2Q2bDd5ejllOWhobTlyZDBzcXIaEgoEYW5vbRIKMTAwMDAwMDAwMBonCgVzdGFrZRIeOTk5OTk5OTk5MDAwMDAwMDAwMDAwMDAwMDAwMDAwEmUKUApGCh8vY29zbW9zLmNyeXB0by5zZWNwMjU2azEuUHViS2V5EiMKIQN2DqUzn6ZOush1a2K38QyptcDAcbf3OlQth9+ggpUcOxIECgIIARgBEhEKCwoFc3Rha2USAjIwEMCaDBpAH4hkQTL5yKFY2VgwzVGiGZmoIoGfq3f2XVYnaUzmvxkD7cR50O7p5fHN1r2TAaTwi/q2zdyMQOYw9QcewjP2oA==","mode":"BROADCAST_MODE_SYNC"}'
