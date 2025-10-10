@@ -71,24 +71,28 @@ VALIDATOR4_APP_TOML=$HOME/.onomyd/validator4/config/app.toml
 # sed -i -E 's|localhost:9090|localhost:9050|g' $VALIDATOR1_APP_TOML
 sed -i -E 's|localhost:9090|localhost:9050|g' $VALIDATOR1_APP_TOML
 sed -i -E 's|minimum-gas-prices = ""|minimum-gas-prices = "0.0001stake"|g' $VALIDATOR1_APP_TOML
+sed -i -E 's|enable = false|enable = true|g' $VALIDATOR1_APP_TOML
 
 # validator2
-sed -i -E 's|tcp://0.0.0.0:1317|tcp://0.0.0.0:1316|g' $VALIDATOR2_APP_TOML
+sed -i -E 's|tcp://localhost:1317|tcp://0.0.0.0:1316|g' $VALIDATOR2_APP_TOML
 sed -i -E 's|localhost:9090|localhost:9088|g' $VALIDATOR2_APP_TOML
 sed -i -E 's|localhost:9091|localhost:9089|g' $VALIDATOR2_APP_TOML
 sed -i -E 's|minimum-gas-prices = ""|minimum-gas-prices = "0.0001stake"|g' $VALIDATOR2_APP_TOML
+sed -i -E 's|enable = false|enable = true|g' $VALIDATOR2_APP_TOML
 
 # validator3
-sed -i -E 's|tcp://0.0.0.0:1317|tcp://0.0.0.0:1315|g' $VALIDATOR3_APP_TOML
+sed -i -E 's|tcp://localhost:1317|tcp://0.0.0.0:1315|g' $VALIDATOR3_APP_TOML
 sed -i -E 's|localhost:9090|localhost:9086|g' $VALIDATOR3_APP_TOML
 sed -i -E 's|localhost:9091|localhost:9087|g' $VALIDATOR3_APP_TOML
 sed -i -E 's|minimum-gas-prices = ""|minimum-gas-prices = "0.0001stake"|g' $VALIDATOR3_APP_TOML
+sed -i -E 's|enable = false|enable = true|g' $VALIDATOR3_APP_TOML
 
 # validator4
-sed -i -E 's|tcp://0.0.0.0:1317|tcp://0.0.0.0:1314|g' $VALIDATOR4_APP_TOML
+sed -i -E 's|tcp://localhost:1317|tcp://0.0.0.0:1314|g' $VALIDATOR4_APP_TOML
 sed -i -E 's|localhost:9090|localhost:9084|g' $VALIDATOR4_APP_TOML
 sed -i -E 's|localhost:9091|localhost:9085|g' $VALIDATOR4_APP_TOML
 sed -i -E 's|minimum-gas-prices = ""|minimum-gas-prices = "0.0001stake"|g' $VALIDATOR4_APP_TOML
+sed -i -E 's|enable = false|enable = true|g' $VALIDATOR4_APP_TOML
 
 
 # change config.toml values
@@ -168,12 +172,12 @@ screen -S onomy3 -t onomy3 -d -m onomyd start --home=$HOME/.onomyd/validator3
 screen -S onomy4 -t onomy4 -d -m onomyd start --home=$HOME/.onomyd/validator4
 # onomyd start --home=$HOME/.onomyd/validator3
 
-sleep 7
+# sleep 7
 
-onomyd tx bank send onomy1wa3u4knw74r598quvzydvca42qsmk6jrc6uj7m onomy1qvuhm5m644660nd8377d6l7yz9e9hhm9rd0sqr 999999999000000000000000000000stake,1000000000anom --keyring-backend=test --chain-id=testing-1 -y --home=$HOME/.onomyd/validator1 --fees 20stake
-sleep 7
-onomyd tx bank send onomy1wa3u4knw74r598quvzydvca42qsmk6jrc6uj7m onomy16gjg8p5fedy48wf403jwmz2cxlwqtkqlk3ptmx 999999999000000000000000000000stake,1000000000anom --keyring-backend=test --chain-id=testing-1 -y --home=$HOME/.onomyd/validator1 --fees 20stake
-sleep 7
+# onomyd tx bank send onomy1wa3u4knw74r598quvzydvca42qsmk6jrc6uj7m onomy1qvuhm5m644660nd8377d6l7yz9e9hhm9rd0sqr 999999999000000000000000000000stake,1000000000anom --keyring-backend=test --chain-id=testing-1 -y --home=$HOME/.onomyd/validator1 --fees 20stake
+# sleep 7
+# onomyd tx bank send onomy1wa3u4knw74r598quvzydvca42qsmk6jrc6uj7m onomy16gjg8p5fedy48wf403jwmz2cxlwqtkqlk3ptmx 999999999000000000000000000000stake,1000000000anom --keyring-backend=test --chain-id=testing-1 -y --home=$HOME/.onomyd/validator1 --fees 20stake
+# sleep 7
 # onomyd q staking validators
 # onomyd keys list --keyring-backend=test --home=$HOME/.onomyd/validator1
 # onomyd keys list --keyring-backend=test --home=$HOME/.onomyd/validator2
