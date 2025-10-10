@@ -21,6 +21,7 @@ onomyd export --home=$HOME_MAINNET > $HOME_FORK/config/genesis.json
 VALIDATORp2_APP_TOML=$HOME_FORK/config/app.toml
 VALIDATORp2_CONFIG=$HOME_FORK/config/config.toml
 sed -i -E 's|minimum-gas-prices = ""|minimum-gas-prices = "0.0001stake"|g' $VALIDATORp2_APP_TOML
+sed -i -E 's|enable = false|enable = true|g' $VALIDATORp2_APP_TOML
 # sed -i -E 's|skip_timeout_commit = false|skip_timeout_commit = true|g' $VALIDATORp2_CONFIG
 
 onomyd start --home=$HOME_FORK --log_level debug

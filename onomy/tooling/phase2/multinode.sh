@@ -174,7 +174,7 @@ screen -S onomy4 -t onomy4 -d -m onomyd start --home=$HOME/.onomyd/validator4
 
 # sleep 7
 
-# onomyd tx bank send onomy1wa3u4knw74r598quvzydvca42qsmk6jrc6uj7m onomy1qvuhm5m644660nd8377d6l7yz9e9hhm9rd0sqr 999999999000000000000000000000stake,1000000000anom --keyring-backend=test --chain-id=testing-1 -y --home=$HOME/.onomyd/validator1 --fees 20stake
+# onomyd tx bank send onomy1wa3u4knw74r598quvzydvca42qsmk6jrc6uj7m onomy1qvuhm5m644660nd8377d6l7yz9e9hhm9rd0sqr 9999999990000000000stake,100anom --keyring-backend=test --chain-id=testing-1 -y --home=$HOME/.onomyd/validator1 --fees 20stake
 # sleep 7
 # onomyd tx bank send onomy1wa3u4knw74r598quvzydvca42qsmk6jrc6uj7m onomy16gjg8p5fedy48wf403jwmz2cxlwqtkqlk3ptmx 999999999000000000000000000000stake,1000000000anom --keyring-backend=test --chain-id=testing-1 -y --home=$HOME/.onomyd/validator1 --fees 20stake
 # sleep 7
