@@ -19,7 +19,7 @@ killall onomyd || true
 HOME_MAINNET=$HOME/.onomyd/validator1
 HOME_FORK=$HOME/.onomyd-tooling2
 # start new binary
-cd /Users/donglieu/925/onomy/
+cd /Users/donglieu/1125/onomy/
 go install ./...
 cd /Users/donglieu/script/onomy/tooling/phase2
 ## mkdir 

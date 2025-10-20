@@ -1,0 +1,20 @@
+{
+  "messages": [
+    {
+      "@type": "/cosmos.distribution.v1beta1.MsgCommunityPoolSpend",
+      "authority":"onomy10d07y265gmmuvt4z0w9aw880jnsr700jqr8n8k",
+      "recipient": "onomy1ujyr90wqkqpgp5rlfrvcgagyrwfqdpq9v90eh0",
+      "amount": [
+        {
+          "denom": "stake",
+          "amount": "624235340751317239159"
+        }
+      ]
+    }
+  ],
+  "metadata": "ipfs://CID",
+  "deposit": "5000000000000000000stake",
+  "title": "fund",
+  "summary": "fund",
+  "expedited": false
+}

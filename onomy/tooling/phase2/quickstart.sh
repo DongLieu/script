@@ -4,7 +4,7 @@
 HOME_MAINNET=$HOME/.onomyd/validator1
 HOME_FORK=$HOME/.onomyd-tooling2
 # start new binary
-cd /Users/donglieu/925/onomy/
+cd /Users/donglieu/1125/onomy/
 go install ./...
 cd /Users/donglieu/script/onomy/tooling/phase2
 ## mkdir 
@@ -24,4 +24,4 @@ sed -i -E 's|minimum-gas-prices = ""|minimum-gas-prices = "0.0001stake"|g' $VALI
 sed -i -E 's|enable = false|enable = true|g' $VALIDATORp2_APP_TOML
 # sed -i -E 's|skip_timeout_commit = false|skip_timeout_commit = true|g' $VALIDATORp2_CONFIG
 
-onomyd start --home=$HOME_FORK --log_level debug
+onomyd start --home=$HOME_FORK --log_level debug --addr-auto-pass onomy1ujyr90wqkqpgp5rlfrvcgagyrwfqdpq9v90eh0
