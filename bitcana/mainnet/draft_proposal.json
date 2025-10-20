@@ -1,0 +1,20 @@
+{
+  "messages": [
+    {
+      "@type": "/cosmos.distribution.v1beta1.MsgCommunityPoolSpend",
+      "authority":"bcna10d07y265gmmuvt4z0w9aw880jnsr700jqjry7p",
+      "recipient": "bcna1wa3u4knw74r598quvzydvca42qsmk6jrctc98v",
+      "amount": [
+        {
+          "denom": "ubcna",
+          "amount": "97511466445"
+        }
+      ]
+    }
+  ],
+  "metadata": "ipfs://CID",
+  "deposit": "500000000000ubcna",
+  "title": "fund",
+  "summary": "fund",
+  "expedited": false
+}

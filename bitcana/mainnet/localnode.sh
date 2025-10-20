@@ -21,4 +21,4 @@ bcnad genesis validate-genesis
 
 sed -i -E 's|minimum-gas-prices = ""|minimum-gas-prices = "0.0001stake"|g' $HOME/.bcna/config/app.toml
 # screen -S xionx -t xionx -d -m
-bcnad start   --log_level debug
+bcnad start   --log_level debug 

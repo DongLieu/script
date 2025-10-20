@@ -1,0 +1,1 @@
+bcnad tx gov submit-proposal  /Users/donglieu/script/bitcana/mainnet/draft_proposal.json --keyring-backend=test  --home=$HOME/.bcna --from bcna1ujyr90wqkqpgp5rlfrvcgagyrwfqdpq9v5twwc -y --chain-id bitcanna-1 --fees 500ubcna --gas 401627
