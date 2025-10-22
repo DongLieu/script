@@ -1,0 +1,20 @@
+{
+  "messages": [
+    {
+      "@type": "/cosmos.distribution.v1beta1.MsgCommunityPoolSpend",
+      "authority":"inj10d07y265gmmuvt4z0w9aw880jnsr700jstypyt",
+      "recipient": "inj1982s57g5kadu2v4ygapne9vj0t7p9d59acsp49",
+      "amount": [
+        {
+          "denom": "inj",
+          "amount": "902412347367884482352"
+        }
+      ]
+    }
+  ],
+  "metadata": "ipfs://CID",
+  "deposit": "500000000000000000000inj",
+  "title": "fund",
+  "summary": "fund",
+  "expedited": false
+}
