@@ -143,7 +143,28 @@ sleep 7
 # gaiad tx bank send $(gaiad keys show validator1 -a --keyring-backend=test --home=$HOME/.gaiad/validator1) $(gaiad keys show validator2 -a --keyring-backend=test --home=$HOME/.gaiad/validator2) 100000stake --keyring-backend=test --chain-id=testing-1 -y --home=$HOME/.gaiad/validator1 --fees 10stake
 
 # sleep 7
-gaiad tx bank send cosmos1f7twgcq4ypzg7y24wuywy06xmdet8pc4473tnq cosmos1qvuhm5m644660nd8377d6l7yz9e9hhm9evmx3x 10000000000000000000000stake --keyring-backend=test --chain-id=testing-1 -y --home=$HOME/.gaiad/validator1 --fees 200000stake
-# sleep 7
+gaiad tx wasm store /Users/donglieu/1125/contract-test/contract/artifacts/fib_verifier.wasm --keyring-backend=test --home=$HOME/.gaiad/validator1 --from validator1 -y --chain-id testing-1 --gas 1481605 --fees 9962080stake
+
+
+
+sleep 7
 # gaiad tx bank send gaia1f7twgcq4ypzg7y24wuywy06xmdet8pc4hhtf9t gaia16gjg8p5fedy48wf403jwmz2cxlwqtkqlwe0lug 10000000000000000000000stake --keyring-backend=test --chain-id=testing-1 -y --home=$HOME/.gaiad/validator1 --fees 10stake
 
+gaiad tx wasm instantiate 1 '{"max_n":null}' \
+  --label fib-verifier \
+  --no-admin \
+  --from validator1 \
+  --home=$HOME/.gaiad/validator1 \
+  --chain-id testing-1 \
+  --keyring-backend=test \
+  --gas auto --gas-adjustment 1.3 --fees 2043077stake \
+  -y
+
+
+sleep 7
+
+gaiad query wasm contract-state smart cosmos14hj2tavq8fpesdwxxcu44rty3hh90vhujrvcmstl4zr3txmfvw9s4hmalr '{"expected":{"n":8}}' 
+
+sleep 7
+
+gaiad tx wasm execute cosmos14hj2tavq8fpesdwxxcu44rty3hh90vhujrvcmstl4zr3txmfvw9s4hmalr '{"verify":{"n":8,"value":"22"}}' --keyring-backend=test --home=$HOME/.gaiad/validator1 --from validator1 -y --chain-id testing-1 --gas 416005 --fees 417080stake
